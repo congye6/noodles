@@ -6,6 +6,19 @@
         我的健康
     @endsection
 
+    @section('go-top')
+        /getHealthInfo#
+    @endsection
+
+    @section('select-page')
+        {{--highlight main menu--}}
+        $('li.sub-menu a').eq(0).addClass('active');
+        {{--open sub menu--}}
+        $('li.sub-menu ul').eq(0).css('display','block');
+        {{--highlight sub menu--}}
+        $('li.sub-menu ul li').eq(0).addClass('active');
+    @endsection
+
     @section('css')
         @@parent
         <script src="assets/js/chart-master/Chart.js"></script>

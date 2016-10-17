@@ -9,6 +9,14 @@
             首页
         @endsection
 
+        @section('select-page')
+            $('li.mt a').addClass('active');
+        @endsection
+
+        @section('go-top')
+            /#
+        @endsection
+
         @section('css')
             @@parent
             {{--for special reason--}}

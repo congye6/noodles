@@ -31,7 +31,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>Noodles</b></a>
+            <a href="/" class="logo"><b>Noodles</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -196,27 +196,27 @@
               	  	
                   <li class="mt">
                       <a href="/">
-                          <i class="fa fa-dashboard"></i>
+                          <i class="fa  fa-hand-o-up"></i>
                           <span>首页</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="fa fa-desktop"></i>
+                          <i class="fa fa-stethoscope"></i>
                           <span>健康</span>
                       </a>
                       <ul class="sub">
                           <li><a  href="/getHealthInfo">我的健康</a></li>
-                          <li><a  href="buttons.html">运动追踪器</a></li>
-                          <li><a  href="panels.html">身体管理</a></li>
-                          <li><a  href="panels.html">睡眠助手</a></li>
+                          <li><a  href="/getWalkInfo">运动追踪器</a></li>
+                          <li><a  href="/getBodyInfo">身体管理</a></li>
+                          <li><a  href="/getSleepInfo">睡眠助手</a></li>
                       </ul>
                   </li>
 
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="fa fa-cogs"></i>
+                          <i class="fa  fa-dribbble"></i>
                           <span>竞赛</span>
                       </a>
                       <ul class="sub">
@@ -226,8 +226,8 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
-                          <i class="fa fa-book"></i>
+                      <a  href="javascript:;" >
+                          <i class="fa fa-group"></i>
                           <span>好友</span>
                       </a>
                       <ul class="sub">
@@ -271,7 +271,7 @@
       <footer class="site-footer">
           <div class="text-center">
               2016 - Congye6
-              <a href="blank.html#" class="go-top">
+              <a href="@section('go-top') @show" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -294,14 +294,21 @@
     @show
 
     
-  {{--<script>
+  <script>
       //custom select box
 
       $(function(){
-          $('select.styled').customSelect();
+          customSelect();
       });
 
-  </script>--}}
+      {{--implement in enxtend page--}}
+      function customSelect(){
+          @section('select-page')
+          @show
+      }
+
+
+  </script>
 
   </body>
 </html>
