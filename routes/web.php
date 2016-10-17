@@ -15,5 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ *  health
+ */
 Route::any('getHealthInfo','Health\InfoController@getHealthInfo');
 Route::any('getWalkInfo','Health\WalkController@getWalkInfo');
+Route::any('getBodyInfo','Health\BodyController@getBodyInfo');
+Route::any('getSleepInfo','Health\SleepController@getSleepInfo');
