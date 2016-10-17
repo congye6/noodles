@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::any('getHealthInfo','Health\InfoController@getHealthInfo');
+Route::any('getWalkInfo','Health\WalkController@getWalkInfo');
