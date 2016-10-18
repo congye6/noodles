@@ -11,12 +11,7 @@
     @endsection
 
     @section('select-page')
-        {{--highlight main menu--}}
-        $('li.sub-menu a').eq(0).addClass('active');
-        {{--open sub menu--}}
-        $('li.sub-menu ul').eq(0).css('display','block');
-        {{--highlight sub menu--}}
-        $('li.sub-menu ul li').eq(0).addClass('active');
+        setSelectMenu(0,0);
     @endsection
 
     @section('css')

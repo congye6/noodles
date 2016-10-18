@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Health;
+namespace App\Http\Controllers\Goal;
 use App\Http\Controllers\Controller;
 
 /**
@@ -9,5 +9,7 @@ use App\Http\Controllers\Controller;
  * Time: 17:35
  */
 class CreateController extends Controller  {
-
+	public function createGoal(){
+		return view('goal.create');
+	}
 }

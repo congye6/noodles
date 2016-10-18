@@ -107,19 +107,19 @@ var Script = function () {
         barColors: ['#ac92ec']
       });
 
-      new Morris.Line({
-        element: 'examplefirst',
-        xkey: 'year',
-        ykeys: ['value'],
-        labels: ['Value'],
-        data: [
-          {year: '2008', value: 20},
-          {year: '2009', value: 10},
-          {year: '2010', value: 5},
-          {year: '2011', value: 5},
-          {year: '2012', value: 20}
-        ]
-      });
+      // new Morris.Line({
+      //   element: 'examplefirst',
+      //   xkey: 'year',
+      //   ykeys: ['value'],
+      //   labels: ['Value'],
+      //   data: [
+      //     {year: '2008', value: 20},
+      //     {year: '2009', value: 10},
+      //     {year: '2010', value: 5},
+      //     {year: '2011', value: 5},
+      //     {year: '2012', value: 20}
+      //   ]
+      // });
 
       $('.code-example').each(function (index, el) {
         eval($(el).text());

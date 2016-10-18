@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Friends;
 
 use App\Http\Controllers\Controller;
 
-class Comments extends Controller {
+class CommentsController extends Controller {
     public function comments(){
         return view('friends.comments');
     }

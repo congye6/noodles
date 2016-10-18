@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Activity;
 
 use App\Http\Controllers\Controller;
 
-class MyActivitiesController extends Controller {
+class MyActivityController extends Controller {
     public  function myActivity(){
         return view('activity.myActivity');
     }

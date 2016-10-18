@@ -220,9 +220,9 @@
                           <span>竞赛</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="calendar.html">发布竞赛</a></li>
-                          <li><a  href="gallery.html">竞赛场</a></li>
-                          <li><a  href="todo_list.html">我的竞赛</a></li>
+                          <li><a  href="/publishActivity">发布竞赛</a></li>
+                          <li><a  href="/activities">竞赛场</a></li>
+                          <li><a  href="/myActivity">我的竞赛</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -231,9 +231,9 @@
                           <span>好友</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="blank.html">我关注的</a></li>
-                          <li><a  href="login.html">粉丝</a></li>
-                          <li><a  href="lock_screen.html">好友评论</a></li>
+                          <li><a  href="/followedFriends">我关注的</a></li>
+                          <li><a  href="/fans">粉丝</a></li>
+                          <li><a  href="/comments">好友评论</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -242,9 +242,9 @@
                           <span>目标</span>
                       </a>
                       <ul class="sub">
-                      	  <li><a  href="form_component.html">新目标</a></li>
-                          <li><a  href="form_component.html">今日目标</a></li>
-                          <li><a  href="form_component.html">历史目标</a></li>
+                      	  <li><a  href="/createGoal">新目标</a></li>
+                          <li><a  href="/todo">今日目标</a></li>
+                          <li><a  href="/historyGoal">历史目标</a></li>
                       </ul>
                   </li>
                  
@@ -307,7 +307,14 @@
           @show
       }
 
-
+      function setSelectMenu(indexOfSuper,indexOfSub){
+          {{--highlight main menu--}}
+        $('li.sub-menu a').eq(indexOfSuper).addClass('active');
+          {{--open sub menu--}}
+        $('li.sub-menu ul').eq(indexOfSuper).css('display','block');
+          {{--highlight sub menu--}}
+        $('li.sub-menu ul.sub li').eq(indexOfSub).addClass('active');
+      }
   </script>
 
   </body>

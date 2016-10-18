@@ -6,7 +6,7 @@
  * Time: 17:37
  */
 
-namespace App\Http\Controllers\Health;
+namespace App\Http\Controllers\Goal;
 
 
 use App\Http\Controllers\Controller;
