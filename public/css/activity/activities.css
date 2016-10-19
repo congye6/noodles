@@ -9,8 +9,10 @@
     height:80px;
     position: relative;
     right:15px;
-    bottom: 11px;
+
     text-align: center;
+    padding:10px;
+    vertical-align:center;
 }
 
 .activity .body{
@@ -21,4 +23,9 @@
 .activity .title{
     position: relative;
     top:5px;
+}
+
+.activity .body img{
+    width: 50px;
+    height:50px;
 }
