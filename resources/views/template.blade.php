@@ -309,7 +309,7 @@
 
       function setSelectMenu(indexOfSuper,indexOfSub){
           {{--highlight main menu--}}
-        $('li.sub-menu a').eq(indexOfSuper).addClass('active');
+        $('li.sub-menu > a').eq(indexOfSuper).addClass('active');
           {{--open sub menu--}}
         $('li.sub-menu ul').eq(indexOfSuper).css('display','block');
           {{--highlight sub menu--}}
