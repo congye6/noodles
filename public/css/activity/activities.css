@@ -1,0 +1,24 @@
+/**
+ * Created by PhpStorm.
+ * User: st0001
+ * Date: 2016-10-19
+ * Time: 16:52
+ */
+.activity .head{
+	background-color:#43b1a9;
+    height:80px;
+    position: relative;
+    right:15px;
+    bottom: 11px;
+    text-align: center;
+}
+
+.activity .body{
+	background-color:#68dff0;
+    height: 80px;
+}
+
+.activity .title{
+    position: relative;
+    top:5px;
+}
