@@ -7,6 +7,10 @@
         我的粉丝
     @endsection
 
+    @section('go-top')
+        /fans#
+    @endsection
+
     @section('page-title')
         我的粉丝
     @endsection

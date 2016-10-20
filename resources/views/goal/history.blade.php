@@ -1,5 +1,5 @@
 @extends('template')
 
     @section('select-page')
-        setSelectMenu(3,12);
+        setSelectMenu(3,11);
     @endsection

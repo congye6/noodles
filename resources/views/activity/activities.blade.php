@@ -32,7 +32,7 @@
                 <div class="row mt">
 
                     <div class="col-md-offset-1 col-md-10 body">
-                        <div class="row ">
+                        <div class="row">
                             <div class="col-lg-2">
                                 <div class="head">
                                     <h4>会尽快的积分换房间大家</h4>

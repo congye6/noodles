@@ -242,7 +242,6 @@
                           <span>目标</span>
                       </a>
                       <ul class="sub">
-                      	  <li><a  href="/createGoal">新目标</a></li>
                           <li><a  href="/todo">今日目标</a></li>
                           <li><a  href="/historyGoal">历史目标</a></li>
                       </ul>
