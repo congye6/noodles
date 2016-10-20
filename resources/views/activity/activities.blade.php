@@ -15,10 +15,12 @@
     @section('css')
         @@parent
         <link rel="stylesheet" href="css/activity/activities.css">
+
     @endsection
 
     @section('js')
         @@parent
+
 
     @endsection
 

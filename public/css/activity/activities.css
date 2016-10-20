@@ -5,7 +5,7 @@
  * Time: 16:52
  */
 .activity .head{
-	background-color:#43b1a9;
+	background-color:RGB(152,192,76);
     height:80px;
     position: relative;
     right:15px;
@@ -13,11 +13,27 @@
     text-align: center;
     padding:10px;
     vertical-align:center;
+
+    -moz-border-radius: 5px 0px 0px 5px;
+    -webkit-border-radius: 5px 0px 0px 5px;
+    border-radius:5px 0px 0px 5px;
 }
 
 .activity .body{
-	background-color:#68dff0;
+	background-color:RGB(241,245,233);
     height: 80px;
+    box-shadow: 0px 3px 2px #aab2bd;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:5px;
+}
+
+/*.activity .body .row div:hover{*/
+    /*box-shadow: 0px 3px 2px #aab2bd;*/
+/*}*/
+
+div.body:hover{
+    background-color: RGB(239,251,216);
     box-shadow: 0px 3px 2px #aab2bd;
 }
 
