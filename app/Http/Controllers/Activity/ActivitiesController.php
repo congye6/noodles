@@ -10,9 +10,11 @@ namespace App\Http\Controllers\Activity;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\vo\ActivityInfoVO;
 
 class ActivitiesController extends Controller {
     public function activities(){
+
         return view('activity.activities');
     }
 

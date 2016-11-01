@@ -43,3 +43,8 @@ Route::any('followedFriends','Friends\FollowedController@followedFriends');
 Route::any('createGoal','Goal\CreateController@createGoal');
 Route::any('historyGoal','Goal\HistoryController@historyGoal');
 Route::any('todo','Goal\TodoController@todo');
+
+/**
+ * user
+ */
+Route::get('profile','User\ProfileController@profile');

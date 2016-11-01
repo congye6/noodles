@@ -191,7 +191,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="/profile"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">Marcel Newman</h5>
               	  	
                   <li class="mt">
@@ -207,7 +207,6 @@
                           <span>健康</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="/getHealthInfo">我的健康</a></li>
                           <li><a  href="/getWalkInfo">运动追踪器</a></li>
                           <li><a  href="/getBodyInfo">身体管理</a></li>
                           <li><a  href="/getSleepInfo">睡眠助手</a></li>
@@ -312,7 +311,7 @@
           {{--open sub menu--}}
         $('li.sub-menu ul').eq(indexOfSuper).css('display','block');
           {{--highlight sub menu--}}
-        $('li.sub-menu ul.sub li').eq(indexOfSub).addClass('active');
+        $('li.sub-menu ul.sub li').eq(indexOfSub-1).addClass('active');
       }
   </script>
 
