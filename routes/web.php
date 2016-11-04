@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user/welcome');
 });
 
 /**
@@ -48,3 +48,4 @@ Route::any('todo','Goal\TodoController@todo');
  * user
  */
 Route::get('profile','User\ProfileController@profile');
+Route::any('login/{userName}/{password}','User\LoginController@login');

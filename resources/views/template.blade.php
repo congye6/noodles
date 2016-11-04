@@ -8,13 +8,13 @@
 
       @section('css')
           <!-- Bootstrap core CSS -->
-          <link href="assets/css/bootstrap.css" rel="stylesheet">
+          <link href="/assets/css/bootstrap.css" rel="stylesheet">
           <!--external css-->
-          <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+          <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
           <!-- Custom styles for this template -->
-          <link href="assets/css/style.css" rel="stylesheet">
-          <link href="assets/css/style-responsive.css" rel="stylesheet">
+          <link href="/assets/css/style.css" rel="stylesheet">
+          <link href="/assets/css/style-responsive.css" rel="stylesheet">
       @show
   </head>
 
@@ -119,7 +119,7 @@
                             </li>
                             <li>
                                 <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="/assets/img/ui-zac.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Zac Snider</span>
                                     <span class="time">Just now</span>
@@ -131,7 +131,7 @@
                             </li>
                             <li>
                                 <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="/assets/img/ui-divya.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Divya Manian</span>
                                     <span class="time">40 mins.</span>
@@ -143,7 +143,7 @@
                             </li>
                             <li>
                                 <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="/assets/img/ui-danro.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dan Rogers</span>
                                     <span class="time">2 hrs.</span>
@@ -155,7 +155,7 @@
                             </li>
                             <li>
                                 <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="/assets/img/ui-sherman.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dj Sherman</span>
                                     <span class="time">4 hrs.</span>
@@ -191,7 +191,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="/profile"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="/login"><img src="/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">Marcel Newman</h5>
               	  	
                   <li class="mt">
@@ -278,17 +278,17 @@
   </section>
     @section('js')
         <!-- js placed at the end of the document so the pages load faster -->
-        <script src="assets/js/jquery.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-        <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
-        <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+        <script src="/assets/js/jquery.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
+        <script class="include" type="text/javascript" src="/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+        <script src="/assets/js/jquery.scrollTo.min.js"></script>
+        <script src="/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
 
         <!--common script for all pages-->
-        <script src="assets/js/common-scripts.js"></script>
+        <script src="/assets/js/common-scripts.js"></script>
     @show
 
     

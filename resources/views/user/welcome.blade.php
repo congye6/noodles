@@ -20,28 +20,28 @@
         @section('css')
             @@parent
             {{--for special reason--}}
-            <script src="assets/js/chart-master/Chart.js"></script>
+            <script src="/assets/js/chart-master/Chart.js"></script>
 
             <!--external css-->
-            <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
-            <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
-            <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
+            <link rel="stylesheet" type="text/css" href="/assets/css/zabuto_calendar.css">
+            <link rel="stylesheet" type="text/css" href="/assets/js/gritter/css/jquery.gritter.css" />
+            <link rel="stylesheet" type="text/css" href="/assets/lineicons/style.css">
 
             <!-- Custom styles for this template -->
-            <link href="assets/css/style.css" rel="stylesheet">
-            <link href="assets/css/style-responsive.css" rel="stylesheet">
+            <link href="/assets/css/style.css" rel="stylesheet">
+            <link href="/assets/css/style-responsive.css" rel="stylesheet">
 
         @endsection
 
         @section('js')
             @@parent
-            <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
-            <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+            <script type="text/javascript" src="/assets/js/gritter/js/jquery.gritter.js"></script>
+            <script type="text/javascript" src="/assets/js/gritter-conf.js"></script>
 
             <!--script for this page-->
-            <script src="assets/js/jquery.sparkline.js"></script>
-            <script src="assets/js/sparkline-chart.js"></script>
-            <script src="assets/js/zabuto_calendar.js"></script>
+            <script src="/assets/js/jquery.sparkline.js"></script>
+            <script src="/assets/js/sparkline-chart.js"></script>
+            <script src="/assets/js/zabuto_calendar.js"></script>
 
 
             <script type="text/javascript">
@@ -52,7 +52,7 @@
                         // (string | mandatory) the text inside the notification
                         text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="http://blacktie.co" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
                         // (string | optional) the image to display on the left
-                        image: 'assets/img/ui-sam.jpg',
+                        image: '/assets/img/ui-sam.jpg',
                         // (bool | optional) if you want it to fade out on its own or just sit there
                         sticky: true,
                         // (int | optional) the time you want it to be alive for before fading out
@@ -190,7 +190,7 @@
                                     <div class="col-sm-6 col-xs-6"></div>
                                 </div>
                                 <div class="centered">
-                                    <img src="assets/img/product.png" width="120">
+                                    <img src="/assets/img/product.png" width="120">
                                 </div>
                             </div>
                         </div><!-- /col-md-4 -->
@@ -201,7 +201,7 @@
                                 <div class="white-header">
                                     <h5>TOP USER</h5>
                                 </div>
-                                <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
+                                <p><img src="/assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
                                 <p><b>Zac Snider</b></p>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -398,7 +398,7 @@
                     <!-- First Member -->
                     <div class="desc">
                         <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
+                            <img class="img-circle" src="/assets/img/ui-divya.jpg" width="35px" height="35px" align="">
                         </div>
                         <div class="details">
                             <p><a href="#">DIVYA MANIAN</a><br/>
@@ -409,7 +409,7 @@
                     <!-- Second Member -->
                     <div class="desc">
                         <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-sherman.jpg" width="35px" height="35px" align="">
+                            <img class="img-circle" src="/assets/img/ui-sherman.jpg" width="35px" height="35px" align="">
                         </div>
                         <div class="details">
                             <p><a href="#">DJ SHERMAN</a><br/>
@@ -420,7 +420,7 @@
                     <!-- Third Member -->
                     <div class="desc">
                         <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-danro.jpg" width="35px" height="35px" align="">
+                            <img class="img-circle" src="/assets/img/ui-danro.jpg" width="35px" height="35px" align="">
                         </div>
                         <div class="details">
                             <p><a href="#">DAN ROGERS</a><br/>
@@ -431,7 +431,7 @@
                     <!-- Fourth Member -->
                     <div class="desc">
                         <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-zac.jpg" width="35px" height="35px" align="">
+                            <img class="img-circle" src="/assets/img/ui-zac.jpg" width="35px" height="35px" align="">
                         </div>
                         <div class="details">
                             <p><a href="#">Zac Sniders</a><br/>
@@ -442,7 +442,7 @@
                     <!-- Fifth Member -->
                     <div class="desc">
                         <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-sam.jpg" width="35px" height="35px" align="">
+                            <img class="img-circle" src="/assets/img/ui-sam.jpg" width="35px" height="35px" align="">
                         </div>
                         <div class="details">
                             <p><a href="#">Marcel Newman</a><br/>
