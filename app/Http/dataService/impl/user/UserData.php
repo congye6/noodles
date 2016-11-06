@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\dataService\impl\user;
 use App\Http\dataService\user\UserDataService;
+use App\Http\po\UserPO;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -9,10 +11,17 @@ use Illuminate\Support\Facades\DB;
  * Date: 2016-11-04
  * Time: 16:31
  */
-class UserData implements UserDataService {
+class UserData extends Model  implements UserDataService{
+
+    protected $table = 'User';
+
+    protected $primaryKey='userName';
+
+    public $incrementing=false;
+
 	public function getUser($userName){
-		$user=DB::table('User')->where('userName','congye6')->first();
-		echo $user.userName;
+		$user=UserData::where('userName',$userName)->first();
+		return $user;
 	}
 
 	public function addUser($userPO){

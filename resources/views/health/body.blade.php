@@ -9,29 +9,29 @@
     @endsection
 
     @section('go-top')
-        /getBodyInfo#
-    @endsection
+    /getBodyInfo#
+@endsection
 
-    @section('css')
-        @@parent
-        <script src="assets/js/chart-master/Chart.js"></script>
-        <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-    @endsection
+@section('css')
+    @@parent
+    <script src="assets/js/chart-master/Chart.js"></script>
+    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+@endsection
 
-    @section('js')
-        @@parent
-        <script src="assets/js/jquery.sparkline.js"></script>
-        <script src="assets/js/sparkline-chart.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+@section('js')
+    @@parent
+    <script src="assets/js/jquery.sparkline.js"></script>
+    <script src="assets/js/sparkline-chart.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
 
-        {{--set data--}}
-        <script src="assets/js/sleep-morris-conf.js"></script>
-    @endsection
+    {{--set data--}}
+    <script src="assets/js/sleep-morris-conf.js"></script>
+@endsection
 
 
 
-    @section('main-content')
+@section('main-content')
         <div class="wrapper site-min-height">
             <div class="row mt">
                 <div class="col-md-12 col-sm-12 mb">

@@ -48,4 +48,5 @@ Route::any('todo','Goal\TodoController@todo');
  * user
  */
 Route::get('profile','User\ProfileController@profile');
-Route::any('login/{userName}/{password}','User\LoginController@login');
+Route::get('loginPage','User\loginController@loginPage');
+Route::get('login/{userName}/{password}','User\LoginController@login');

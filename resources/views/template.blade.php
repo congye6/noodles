@@ -305,6 +305,12 @@
           @show
       }
 
+      function loginControll(){
+          var userName;
+
+
+      }
+
       function setSelectMenu(indexOfSuper,indexOfSub){
           {{--highlight main menu--}}
         $('li.sub-menu > a').eq(indexOfSuper).addClass('active');

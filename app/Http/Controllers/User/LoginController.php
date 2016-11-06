@@ -21,9 +21,14 @@ class LoginController extends Controller {
 		$this->bl=$bl;
 	}
 
+	public function loginPage(){
+	    return view('user.login');
+    }
+
 	public function login($userName,$password){
-		$this->bl->login($userName,$password);
-		return view('user.welcome');
+		$result=$this->bl->login($userName,$password);
+
+		return $result;
 	}
 
 }
