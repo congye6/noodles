@@ -9,55 +9,15 @@
 namespace App\Http\po;
 
 
-class UserPO{
-    private $userName;
+use App\Http\vo\UserVO;
+use Illuminate\Database\Eloquent\Model;
 
-    private $password;
+class UserPO extends Model {
 
-    private $coins;
 
-    /**
-     * @return mixed
-     */
-    public function getUserName(){
-        return $this->userName;
-    }
 
-    /**
-     * @param mixed $userName
-     */
-    public function setUserName($userName){
-        $this->userName = $userName;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getPassword(){
-        return $this->password;
-    }
 
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCoins(){
-        return $this->coins;
-    }
-
-    /**
-     * @param mixed $coins
-     */
-    public function setCoins($coins){
-        $this->coins = $coins;
-    }
 
 
 }

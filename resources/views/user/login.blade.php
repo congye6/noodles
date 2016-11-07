@@ -100,13 +100,13 @@ MAIN CONTENT
                     </div>
                     <div class="modal-body">
                         <p>Enter your name here</p>
-                        <input type="text" name="email" placeholder="UserName" autocomplete="off" class="form-control placeholder-no-fix">
+                        <input type="text" name='_method' id="registerName" placeholder="UserName" autocomplete="off" class="form-control placeholder-no-fix">
                         <p>Enter your password here</p>
-                        <input type="text" name="email" placeholder="Password" autocomplete="off" class="form-control placeholder-no-fix">
+                        <input type="text" name='_method' id="registerPassword" placeholder="Password" autocomplete="off" class="form-control placeholder-no-fix">
                     </div>
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                        <button class="btn btn-theme" type="button">Register</button>
+                        <button class="btn btn-theme" type="button" onclick="register()">Register</button>
                     </div>
                 </div>
             </div>
@@ -125,17 +125,39 @@ MAIN CONTENT
 <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
 
 <script src="/js/alert.js"></script>
+<script src="/js/cookie.js"></script>
 <script>
     $.backstretch("assets/img/login-bg.jpg", {speed: 500});
 
     function login(){
+        var userName=$("input#userName").val();
         $.ajax({
             type: "get",
-            url:'/login/'+$("input#userName").val()+'/'+$("input#password").val(),
+            url:'/login/'+userName+'/'+$("input#password").val(),
             data:'',
             success: function (data) {
-                if(data=='true')
-                    window.location.href="/welcome";
+                if(data=='true') {
+                    //保存cookie
+                    setCookie('userName',userName,30);
+
+                    window.location.href = "/";
+                }
+                else
+                    zeroModal.error(data);
+            }
+        });
+    }
+
+    function register(){
+        var userName=$("input#registerName").val();
+        $.ajax({
+            type: "get",
+            url:'/register/'+userName+'/'+$("input#registerPassword").val(),
+            data:'',
+            success: function (data) {
+                if(data=='true') {
+                    zeroModal.success('注册成功');
+                }
                 else
                     zeroModal.error(data);
             }

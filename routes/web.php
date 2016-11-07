@@ -50,3 +50,4 @@ Route::any('todo','Goal\TodoController@todo');
 Route::get('profile','User\ProfileController@profile');
 Route::get('loginPage','User\loginController@loginPage');
 Route::get('login/{userName}/{password}','User\LoginController@login');
+Route::get('register/{userName}/{password}','User\LoginController@register');

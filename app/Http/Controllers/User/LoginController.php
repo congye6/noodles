@@ -12,6 +12,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\bussinessLogicService\user\LoginBlService;
 use App\Http\Controllers\Controller;
+use App\Http\vo\UserVO;
+use Illuminate\Http\Request;
+
 
 class LoginController extends Controller {
 
@@ -28,6 +31,12 @@ class LoginController extends Controller {
 	public function login($userName,$password){
 		$result=$this->bl->login($userName,$password);
 
+		return $result;
+	}
+
+	public function register($userName,$password){
+		$userVO=new UserVO($userName,$password);
+		$result=$this->bl->register($userVO);
 		return $result;
 	}
 

@@ -16,7 +16,20 @@ class UserVO{
 
     public $coins;
 
-    public function isNull(){
+	/**
+	 * UserVO constructor.
+	 * @param $userName
+	 * @param $password
+	 * @param $coins
+	 */
+	public function __construct($userName, $password, $coins=0){
+		$this->userName = $userName;
+		$this->password = $password;
+		$this->coins = $coins;
+	}
+
+
+	public function isNull(){
         return $this->userName==null||$this->password==null;
     }
 }

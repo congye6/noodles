@@ -176,7 +176,7 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">注销</a></li>
+                    <li><a class="logout" href="/loginPage">注销</a></li>
             	</ul>
             </div>
         </header>
@@ -192,7 +192,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
               	  <p class="centered"><a href="/login"><img src="/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Marcel Newman</h5>
+              	  <h5 class="centered" id="userName"></h5>
               	  	
                   <li class="mt">
                       <a href="/">
@@ -289,6 +289,8 @@
 
         <!--common script for all pages-->
         <script src="/assets/js/common-scripts.js"></script>
+
+        <script src="/js/cookie.js"></script>
     @show
 
     
@@ -297,6 +299,7 @@
 
       $(function(){
           customSelect();
+          showUserInfo();
       });
 
       {{--implement in enxtend page--}}
@@ -305,10 +308,9 @@
           @show
       }
 
-      function loginControll(){
-          var userName;
-
-
+      function showUserInfo(){
+          var userName=getCookie('userName');
+          $("h5#userName").text(userName);
       }
 
       function setSelectMenu(indexOfSuper,indexOfSub){

@@ -2,8 +2,9 @@
 namespace App\Http\dataService\impl\user;
 use App\Http\dataService\user\UserDataService;
 use App\Http\po\UserPO;
+use App\Http\tool\ObjectToArray;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+
 
 /**
  * Created by PhpStorm.
@@ -13,18 +14,23 @@ use Illuminate\Support\Facades\DB;
  */
 class UserData extends Model  implements UserDataService{
 
-    protected $table = 'User';
+	protected $table = 'User';
 
-    protected $primaryKey='userName';
+	protected $primaryKey='userName';
 
-    public $incrementing=false;
+	public $incrementing=false;
+
+
+	protected $fillable = ['userName','password','coins'];
 
 	public function getUser($userName){
 		$user=UserData::where('userName',$userName)->first();
 		return $user;
 	}
 
-	public function addUser($userPO){
-
+	public function addUser($userVO){
+		UserData::create(ObjectToArray::run($userVO));
 	}
+
+
 }
