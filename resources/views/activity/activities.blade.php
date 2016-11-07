@@ -15,12 +15,13 @@
     @section('css')
         @@parent
         <link rel="stylesheet" href="css/activity/activities.css">
+        <link href="style/mobiscroll.2.13.2.css" rel="stylesheet" />
 
     @endsection
 
     @section('js')
         @@parent
-
+        <script src="script/mobiscroll.2.13.2.js"></script>
 
     @endsection
 

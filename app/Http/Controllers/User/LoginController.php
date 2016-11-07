@@ -30,7 +30,6 @@ class LoginController extends Controller {
 
 	public function login($userName,$password){
 		$result=$this->bl->login($userName,$password);
-
 		return $result;
 	}
 

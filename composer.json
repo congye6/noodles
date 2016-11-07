@@ -20,6 +20,9 @@
         "classmap": [
             "database"
         ],
+        "file":[
+          "app/tool/StringTool.php"
+        ],
         "psr-4": {
             "App\\": "app/"
         }

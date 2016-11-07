@@ -13,41 +13,42 @@
 
 Route::get('/', function () {
     return view('user/welcome');
-});
+})->middleware('login');
 
 /**
  * health
  */
-Route::any('getHealthInfo','Health\InfoController@getHealthInfo');
-Route::any('getWalkInfo','Health\WalkController@getWalkInfo');
-Route::any('getBodyInfo','Health\BodyController@getBodyInfo');
-Route::any('getSleepInfo','Health\SleepController@getSleepInfo');
+Route::any('getHealthInfo','Health\InfoController@getHealthInfo')->middleware('login');
+Route::any('getWalkInfo','Health\WalkController@getWalkInfo')->middleware('login');
+Route::any('getBodyInfo','Health\BodyController@getBodyInfo')->middleware('login');
+Route::any('getSleepInfo','Health\SleepController@getSleepInfo')->middleware('login');
 
 /**
  * activity
  */
-Route::any('activities','Activity\ActivitiesController@activities');
-Route::any('myActivity','Activity\MyActivityController@myActivity');
-Route::any('publishActivity','Activity\PublishController@publishActivity');
+Route::get('activities','Activity\ActivitiesController@activities')->middleware('login');
+Route::get('myActivity','Activity\MyActivityController@myActivity')->middleware('login');
+Route::get('publishActivity','Activity\PublishController@publishActivity')->middleware('login');
+Route::any('publish/{description}/{startTime}/{endTime}/{sportType}/{enterFee}','Activity\PublishController@publish')->middleware('login');
 
 /**
  * friends
  */
-Route::any('comments','Friends\CommentsController@comments');
-Route::any('fans','Friends\FansController@fans');
-Route::any('followedFriends','Friends\FollowedController@followedFriends');
+Route::any('comments','Friends\CommentsController@comments')->middleware('login');
+Route::any('fans','Friends\FansController@fans')->middleware('login');
+Route::any('followedFriends','Friends\FollowedController@followedFriends')->middleware('login');
 
 /**
  * goal
  */
-Route::any('createGoal','Goal\CreateController@createGoal');
-Route::any('historyGoal','Goal\HistoryController@historyGoal');
-Route::any('todo','Goal\TodoController@todo');
+Route::any('createGoal','Goal\CreateController@createGoal')->middleware('login');
+Route::any('historyGoal','Goal\HistoryController@historyGoal')->middleware('login');
+Route::any('todo','Goal\TodoController@todo')->middleware('login');
 
 /**
  * user
  */
-Route::get('profile','User\ProfileController@profile');
+Route::get('profile','User\ProfileController@profile')->middleware('login');
 Route::get('loginPage','User\loginController@loginPage');
 Route::get('login/{userName}/{password}','User\LoginController@login');
 Route::get('register/{userName}/{password}','User\LoginController@register');

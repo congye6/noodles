@@ -15,6 +15,7 @@
           <!-- Custom styles for this template -->
           <link href="/assets/css/style.css" rel="stylesheet">
           <link href="/assets/css/style-responsive.css" rel="stylesheet">
+          <link href="/css/alert.css" rel="stylesheet">
       @show
   </head>
 
@@ -290,7 +291,10 @@
         <!--common script for all pages-->
         <script src="/assets/js/common-scripts.js"></script>
 
+        <script src="/js/alert.js"></script>
         <script src="/js/cookie.js"></script>
+        <script src="/js/validate.js"></script>
+        <script src="/js/urlMaker.js"></script>
     @show
 
     
@@ -300,6 +304,8 @@
       $(function(){
           customSelect();
           showUserInfo();
+
+
       });
 
       {{--implement in enxtend page--}}

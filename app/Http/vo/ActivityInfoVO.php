@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\vo;
+use App\Http\tool\StringTool;
+
 /**
  * 竞赛信息
  * User: congye6
@@ -10,12 +12,12 @@ class ActivityInfoVO{
 	public $id;
 
 	//string 项目介绍
-	public $introduction;
+	public $description;
 
 	//string year-month-day
-	public $startDate;
+	public $startTime;
 
-	public $endDate;
+	public $endTime;
 
 	//int 运动类型，当前仅有追踪器一种
 	public $sportType;
@@ -26,7 +28,30 @@ class ActivityInfoVO{
 	//发布者
 	public $publisher;
 
-	//参与者id列表
-	public $partnerList;
+	public function isNull(){
+		return StringTool::isNull($this->description)||StringTool::isNull($this->startTime)||StringTool::isNull($this->endTime);
+	}
+
+	/**
+	 * ActivityInfoVO constructor.
+	 * @param $id
+	 * @param $description
+	 * @param $startDate
+	 * @param $endDate
+	 * @param $sportType
+	 * @param $enterFee
+	 * @param $publisher
+	 */
+	public function __construct($description, $startDate, $endDate, $sportType, $enterFee, $publisher){
+
+		$this->description = $description;
+		$this->startTime = $startDate;
+		$this->endTime = $endDate;
+		$this->sportType = $sportType;
+		$this->enterFee = $enterFee;
+		$this->publisher = $publisher;
+		$this->id=0;
+	}
+
 
 }

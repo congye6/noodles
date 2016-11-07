@@ -29,12 +29,22 @@ class AppServiceProvider extends ServiceProvider{
 	        'App\Http\bussinessLogicService\impl\user\LoginBl'
         );
 
+	    $this->app->bind(
+		    'App\Http\bussinessLogicService\activity\ActivityBlService',
+		    'App\Http\bussinessLogicService\impl\activity\ActivityBl'
+	    );
+
 	    /**
 	     * data
 	     */
 	    $this->app->bind(
 		    'App\Http\dataService\user\UserDataService',
 		    'App\Http\dataService\impl\user\UserData'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\dataService\activity\ActivityDataService',
+		    'App\Http\dataService\impl\activity\ActivityData'
 	    );
 
 
