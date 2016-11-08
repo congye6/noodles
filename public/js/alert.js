@@ -30,8 +30,8 @@
         content: '', //显示内容
         url: false, //如果输入url，将会根据url返回的内容显示在弹出层中
         iframe: false, //是否需要嵌入iframe，默认false，该参数需要和url一起使用
-        width: '500px', //宽度（px、pt、%）
-        height: '300px', //高度（px、pt、%）
+        width: '60%', //宽度（px、pt、%）
+        height: '40%', //高度（px、pt、%）
         transition: false, //是否需要出场动画，默认false
         opacity: 0.2, // 遮罩层的透明度
         overlay: true, //是否需要显示遮罩层，默认true

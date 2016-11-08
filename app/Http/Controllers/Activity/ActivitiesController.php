@@ -26,8 +26,15 @@ class ActivitiesController extends Controller {
 	}
 
 	public function activities(){
-		$activities=$this->bl->getActivities($_COOKIE['userName']);
+		$activities=$this->bl->getActivities();
         return view('activity.activities')->with('activities',$activities);
     }
+
+    public function activity($activityId){
+		$activity=$this->bl->getActivity($activityId);
+	    return view()->with('activity',$activity);
+    }
+
+
 
 }

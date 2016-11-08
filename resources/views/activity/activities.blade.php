@@ -22,6 +22,19 @@
     @section('js')
         @@parent
         <script src="script/mobiscroll.2.13.2.js"></script>
+        <script>
+            $(function () {
+                if(!$('.row').length>0)
+                    zeroModal.alert('没有正在进行的项目');
+
+            })
+
+            function activityDetail(id){
+                zeroModal.alert(id);
+            }
+
+
+        </script>
     @endsection
 
 
@@ -34,7 +47,7 @@
             <div class="activity">
                 @foreach($activities as $activity)
                     <!--table-->
-                        <div class="row mt">
+                        <div class="row mt" onclick="activityDetail({{$activity->id}}+'')">
 
                             <div class="col-md-offset-1 col-md-10 body">
                                 <div class="row">
@@ -68,7 +81,11 @@
                                 </div>
                             </div>
 
+                            {{--<div style="display:none;" id="id"></div>--}}
+
                         </div>
+
+
 
                         <!--table-->
                     @endforeach

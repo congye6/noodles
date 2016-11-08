@@ -11,5 +11,9 @@ use App\Http\vo\ActivityInfoVO;
 interface ActivityBlService{
 	public function publish(ActivityInfoVO $vo);
 
-	public function getActivities($userName);
+	public function getActivities();
+
+	public function getMyActivities($userName);
+
+	public function getActivity($activityId);
 }

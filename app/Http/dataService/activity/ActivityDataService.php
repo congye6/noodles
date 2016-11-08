@@ -11,5 +11,9 @@ use App\Http\vo\ActivityInfoVO;
 interface ActivityDataService{
 	public function addActivity(ActivityInfoVO $vo);
 
-	public function getActivities($userName);
+	public function getMyActivities($userName);
+
+	public function getActivities();
+
+	public function getActivity($activityId);
 }

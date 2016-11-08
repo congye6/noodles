@@ -22,8 +22,16 @@ class ActivityData extends Model implements ActivityDataService {
 		ActivityData::create(ObjectTool::objectToArray($vo));
 	}
 
-	public function getActivities($userName){
+	public function getMyActivities($userName){
 		return ActivityData::where('publisher',$userName)->get();
+	}
+
+	public function getActivities(){
+		return ActivityData::all();
+	}
+
+	public function getActivity($activityId){
+		return ActivityData::where('id',$activityId)->first;
 	}
 
 }

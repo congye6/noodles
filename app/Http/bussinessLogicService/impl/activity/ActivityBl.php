@@ -43,7 +43,15 @@ class ActivityBl implements ActivityBlService {
 		return 'true';
 	}
 
-	public function getActivities($userName){
-		return $this->data->getActivities($userName);
+	public function getMyActivities($userName){
+		return $this->data->getMyActivities($userName);
+	}
+
+	public function getActivities(){
+		return $this->data->getActivities();
+	}
+
+	public function getActivity($activityId){
+		return $this->data->getActivity($activityId);
 	}
 }
