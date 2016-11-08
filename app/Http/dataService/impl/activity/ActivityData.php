@@ -9,7 +9,7 @@
 namespace App\Http\dataService\impl\activity;
 
 use App\Http\dataService\activity\ActivityDataService;
-use App\Http\tool\ObjectToArray;
+use App\Http\tool\ObjectTool;
 use App\Http\vo\ActivityInfoVO;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,7 +19,11 @@ class ActivityData extends Model implements ActivityDataService {
 	protected $fillable = ['description','startTime','endTime','sportType','enterFee','publisher'];
 
 	public function addActivity(ActivityInfoVO $vo){
-		ActivityData::create(ObjectToArray::run($vo));
+		ActivityData::create(ObjectTool::objectToArray($vo));
+	}
+
+	public function getActivities($userName){
+		return ActivityData::where('publisher',$userName)->get();
 	}
 
 }

@@ -9,15 +9,25 @@
 namespace App\Http\Controllers\Activity;
 
 
+use App\Http\bussinessLogicService\activity\ActivityBlService;
 use App\Http\Controllers\Controller;
+use App\Http\tool\ObjectTool;
 use App\Http\vo\ActivityInfoVO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
 
 class ActivitiesController extends Controller {
-    public function activities(){
-        return view('activity.activities');
+
+	private $bl;
+
+	function __construct(ActivityBlService $bl){
+		$this->bl=$bl;
+	}
+
+	public function activities(){
+		$activities=$this->bl->getActivities($_COOKIE['userName']);
+        return view('activity.activities')->with('activities',$activities);
     }
 
 }

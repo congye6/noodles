@@ -84,7 +84,10 @@
                     url:url,
                     data:'',
                     success: function (data) {
-                        zeroModal.alert(data);
+                        if(data=='true')
+                            zeroModal.success('创建竞赛成功');
+                        else
+                            zeroModal.error(data);
                     }
                 });
 

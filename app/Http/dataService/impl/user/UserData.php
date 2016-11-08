@@ -2,7 +2,7 @@
 namespace App\Http\dataService\impl\user;
 use App\Http\dataService\user\UserDataService;
 use App\Http\po\UserPO;
-use App\Http\tool\ObjectToArray;
+use App\Http\tool\ObjectTool;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -29,7 +29,7 @@ class UserData extends Model  implements UserDataService{
 	}
 
 	public function addUser($userVO){
-		UserData::create(ObjectToArray::run($userVO));
+		UserData::create(ObjectTool::objectToArray($userVO));
 	}
 
 
