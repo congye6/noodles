@@ -30,7 +30,8 @@
             })
 
             function activityDetail(id){
-                zeroModal.alert(id);
+                var url=getUrl(['activityDetail',id]);
+                window.location.href=url;
             }
 
 
@@ -69,7 +70,7 @@
 
                                     <div class="col-lg-4 centered">
                                         <p class="title"><b>离竞赛开始还有</b></p>
-                                        <h1><b>1</b><small>天</small><b>3</b><small>小时</small></h1>
+                                        <h><b>1</b><small>天</small><b>3</b><small>小时</small></h>
 
                                     </div>
 

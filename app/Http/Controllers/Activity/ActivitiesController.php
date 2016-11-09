@@ -32,7 +32,7 @@ class ActivitiesController extends Controller {
 
     public function activity($activityId){
 		$activity=$this->bl->getActivity($activityId);
-	    return view()->with('activity',$activity);
+	    return view('activity.activityDetail')->with('activity',$activity);
     }
 
 

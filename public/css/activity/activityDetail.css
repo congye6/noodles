@@ -1,0 +1,47 @@
+img#title{
+    width:50px;
+    height:50px;
+}
+
+img#partner{
+    width:80px;
+    height:80px;
+}
+
+img.contentIcon{
+    width:80px;
+    height:80px;
+}
+
+h3#title{
+    position: relative;
+    right:40px;
+    font-weight: bold;
+}
+
+div.steps{
+    background-color:RGB(255,162,0);
+    float: left;
+    height:50px;
+
+    position:relative;
+    right:20px;
+    top:20px;
+
+    -moz-border-radius: 5px 0px 0px 5px;
+    -webkit-border-radius: 5px 0px 0px 5px;
+    border-radius:5px 0px 0px 5px;
+}
+h2.steps{
+    color:white;
+    position:relative;
+    left:10px;
+    bottom: 10px;
+}
+img.steps{
+    height:50px;
+    wodth:52px;
+    position:relative;
+    right:20px;
+    top:20px;
+}

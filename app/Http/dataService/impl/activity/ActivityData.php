@@ -31,7 +31,7 @@ class ActivityData extends Model implements ActivityDataService {
 	}
 
 	public function getActivity($activityId){
-		return ActivityData::where('id',$activityId)->first;
+		return ActivityData::where('id',$activityId)->first();
 	}
 
 }
