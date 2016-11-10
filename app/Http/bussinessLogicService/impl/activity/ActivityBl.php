@@ -5,6 +5,7 @@ use App\Http\dataService\activity\ActivityDataService;
 use App\Http\tool\DateTool;
 use App\Http\tool\ObjectTool;
 use App\Http\vo\ActivityInfoVO;
+use App\Http\vo\ActivityVO;
 
 /**
  * Created by PhpStorm.
@@ -48,10 +49,42 @@ class ActivityBl implements ActivityBlService {
 	}
 
 	public function getActivities(){
-		return $this->data->getActivities();
+		$activityList=$this->data->getActivities();
+
+
+		$activityVOList=[];
+		foreach($activityList as $activity){
+			$activityVO=$this->calculate($activity);
+			array_push($activityVOList,$activityVO);
+		}
+
+		return $activityVOList;
 	}
 
 	public function getActivity($activityId){
-		return $this->data->getActivity($activityId);
+		$activity=$this->data->getActivity($activityId);
+
+		$activityVO=$this->calculate($activity);
+		return $activityVO;
+	}
+
+
+	private function calculate($activity){
+		$now=DateTool::today();
+		$isBegin='开始';
+
+
+		if(DateTool::isLatter($activity->startTime,$now)){
+			//还没开始
+			$result=DateTool::minus($activity->startTime,$now);
+
+		}else{
+			//开始,计算离结束的时间
+			$isBegin='结束';
+			$result=DateTool::minus($activity->endTime,$now);
+		}
+
+		$activityVO=new ActivityVO($activity,$isBegin,$result['day'],$result['hour']);
+		return $activityVO;
 	}
 }

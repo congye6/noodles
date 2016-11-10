@@ -79,8 +79,9 @@
 							</div>
 
 							<div class="col-md-5">
-								<h2><small>离竞赛开始</small><b>1</b><small>天</small><b>2</b><small>小时</small></h2>
-								<h5>{{$activity->startTime}}-{{$activity->endTime}}</h5>
+
+								<h2><small>离竞赛{{$activityVO->isBegin}}</small><b>{{$activityVO->day}}</b><small>天</small><b>{{$activityVO->hour}}</b><small>小时</small></h2>
+								<h5>{{$activityVO->activity->startTime}}-{{$activityVO->activity->endTime}}</h5>
 							</div>
 
 							<div class="col-md-1">
@@ -89,7 +90,7 @@
 
 							<div class="col-lg-5">
 								<h2><b>80</b><small>金币</small></h2>
-								<h5>保证金:{{$activity->enterFee}}，等差分配</h5>
+								<h5>保证金:{{$activityVO->activity->enterFee}}，等差分配</h5>
 							</div>
 
 						</div>
@@ -101,7 +102,7 @@
 
 							<div class="col-lg-5">
 
-								<h4>{{$activity->description}}</h4>
+								<h4>{{$activityVO->activity->description}}</h4>
 							</div>
 						</div>
 					</div>

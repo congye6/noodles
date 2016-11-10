@@ -31,8 +31,8 @@ class ActivitiesController extends Controller {
     }
 
     public function activity($activityId){
-		$activity=$this->bl->getActivity($activityId);
-	    return view('activity.activityDetail')->with('activity',$activity);
+		$activityVO=$this->bl->getActivity($activityId);
+	    return view('activity.activityDetail')->with('activityVO',$activityVO);
     }
 
 
