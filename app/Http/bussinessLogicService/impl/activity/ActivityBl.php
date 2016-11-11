@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\bussinessLogicService\impl\activity;
 use App\Http\bussinessLogicService\activity\ActivityBlService;
+use App\Http\bussinessLogicService\activity\PartnerBlService;
 use App\Http\dataService\activity\ActivityDataService;
 use App\Http\tool\DateTool;
 use App\Http\tool\ObjectTool;
@@ -17,8 +18,11 @@ class ActivityBl implements ActivityBlService {
 
 	private $data;
 
-	function __construct(ActivityDataService $data){
+	private $partnerBl;
+
+	function __construct(ActivityDataService $data,PartnerBlService $partnerBl){
 		$this->data=$data;
+		$this->partnerBl=$partnerBl;
 	}
 
 
@@ -41,6 +45,8 @@ class ActivityBl implements ActivityBlService {
 			return '保证金要小于1万';
 
 		$this->data->addActivity($vo);
+
+		$this->partnerBl->joinActivity($vo->publisher);
 		return 'true';
 	}
 
@@ -57,6 +63,8 @@ class ActivityBl implements ActivityBlService {
 			$activityVO=$this->calculate($activity);
 			array_push($activityVOList,$activityVO);
 		}
+
+
 
 		return $activityVOList;
 	}

@@ -46,21 +46,21 @@
 
 
             <div class="activity">
-                @foreach($activities as $activity)
+                @foreach($activities as $activityVO)
                     <!--table-->
-                        <div class="row mt" onclick="activityDetail({{$activity->id}}+'')">
+                        <div class="row mt" onclick="activityDetail({{$activityVO->activity->id}}+'')">
 
                             <div class="col-md-offset-1 col-md-10 body">
                                 <div class="row">
                                     <div class="col-lg-2">
                                         <div class="head">
-                                            <h4>{{$activity->description}}</h4>
+                                            <h4>{{$activityVO->activity->description}}</h4>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-2 centered">
                                         <p class="title"><b>参与人数</b></p>
-                                        <h1><b>{{$activity->id}}</b></h1>
+                                        <h1><b>{{$activityVO->activity->id}}</b></h1>
                                     </div>
 
                                     <div class="col-lg-2 centered">
@@ -69,14 +69,14 @@
                                     </div>
 
                                     <div class="col-lg-4 centered">
-                                        <p class="title"><b>离竞赛开始还有</b></p>
-                                        <h><b>1</b><small>天</small><b>3</b><small>小时</small></h>
+                                        <p class="title"><b>离竞赛{{$activityVO->isBegin}}还有</b></p>
+                                        <h1><b>{{$activityVO->day}}</b><small>天</small><b>{{$activityVO->hour}}</b><small>小时</small></h1>
 
                                     </div>
 
                                     <div class="col-lg-2 centered">
                                         <p class="title"><b>奖金</b></p>
-                                        <h1><b>{{$activity->enterFee}}</b><small>金币</small></h1>
+                                        <h1><b>{{$activityVO->activity->enterFee}}</b><small>金币</small></h1>
                                     </div>
 
                                 </div>

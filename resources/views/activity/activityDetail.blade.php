@@ -21,6 +21,26 @@
 	@section('js')
 		@@parent
 
+		<script>
+			function joinActivity(id){
+				var url=getUrl('joinActivity',id);
+				$.ajax({
+					type: "get",
+					url:url,
+					data:'',
+					success: function (data) {
+						if(data=='true') {
+							zeroModal.success('参加成功');
+						}
+						else
+							zeroModal.error(data);
+					}
+				});
+			}
+
+
+		</script>
+
 	@endsection
 
 
@@ -109,31 +129,42 @@
 				</div>
 			</div>
 
-			<div class="row mt">
-				<div class="col-lg-12"><h2>当前战况</h2></div>
+			@if($activityVO->isBegin=='开始')
+				<div class="row mt">
+					<div class="col-lg-12"><h2>当前战况</h2></div>
 
-			</div>
-
-			<div class="row mt">
-				<div class="col-md-1 centered">
-					<img class='contentIcon' src="/graphics/activity/first.svg">
 				</div>
 
-				<div class="col-md-1">
-					<img id="partner" class='img-circle' src="/assets/img/friends/fr-01.jpg">
-				</div>
+				<div class="row mt">
+					<div class="col-md-1 centered">
+						<img class='contentIcon' src="/graphics/activity/first.svg">
+					</div>
 
-				<div class="col-md-4">
-					<div class="steps centered">
-						<h2 class="steps">113455步&nbsp</h2>
+					<div class="col-md-1">
+						<img id="partner" class='img-circle' src="/assets/img/friends/fr-01.jpg">
+					</div>
+
+					<div class="col-md-4">
+						<div class="steps centered">
+							<h2 class="steps">113455步&nbsp</h2>
+
+						</div>
+						<img class='steps' src="/graphics/activity/steps.png">
 
 					</div>
-					<img class='steps' src="/graphics/activity/steps.png">
+
+
+				</div>
+			@else
+				<div class="row mt">
+					<div class="col-md-2 col-md-offset-5">
+						<button class="btn btn-theme" onclick="joinActivity({{$activityVO->activity->id}})">参加</button>
+
+					</div>
 
 				</div>
 
-
-			</div>
+			@endif
 
 
 		</div>

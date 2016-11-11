@@ -34,6 +34,11 @@ class AppServiceProvider extends ServiceProvider{
 		    'App\Http\bussinessLogicService\impl\activity\ActivityBl'
 	    );
 
+	    $this->app->bind(
+		    'App\Http\bussinessLogicService\activity\PartnerBlService',
+		    'App\Http\bussinessLogicService\impl\activity\PartnerBl'
+	    );
+
 	    /**
 	     * data
 	     */

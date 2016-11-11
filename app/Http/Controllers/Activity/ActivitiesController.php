@@ -35,6 +35,10 @@ class ActivitiesController extends Controller {
 	    return view('activity.activityDetail')->with('activityVO',$activityVO);
     }
 
+    public function joinActivity($activityId){
+
+    }
+
 
 
 }

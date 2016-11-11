@@ -30,7 +30,9 @@ Route::get('activities','Activity\ActivitiesController@activities')->middleware(
 Route::get('myActivity','Activity\MyActivityController@myActivity')->middleware('login');
 Route::get('publishActivity','Activity\PublishController@publishActivity')->middleware('login');
 Route::get('activityDetail/{activityId}','Activity\ActivitiesController@activity')->middleware('login');
+Route::get('joinActivity/{activityId}','Activity\ActivitiesController@activity')->middleware('login');
 Route::any('publish/{description}/{startTime}/{endTime}/{sportType}/{enterFee}','Activity\PublishController@publish')->middleware('login');
+
 
 /**
  * friends
