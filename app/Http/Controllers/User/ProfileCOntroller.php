@@ -12,7 +12,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller {
-	public function profile(){
+	public function profile($userName){
 		return view('user.profile');
 	}
 

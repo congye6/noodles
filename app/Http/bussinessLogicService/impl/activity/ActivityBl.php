@@ -4,7 +4,7 @@ use App\Http\bussinessLogicService\activity\ActivityBlService;
 use App\Http\bussinessLogicService\activity\PartnerBlService;
 use App\Http\dataService\activity\ActivityDataService;
 use App\Http\tool\DateTool;
-use App\Http\tool\ObjectTool;
+use App\Http\vo\ActivityDetailVO;
 use App\Http\vo\ActivityInfoVO;
 use App\Http\vo\ActivityVO;
 
@@ -46,21 +46,20 @@ class ActivityBl implements ActivityBlService {
 
 		$this->data->addActivity($vo);
 
-		$this->partnerBl->joinActivity($vo->publisher);
+
 		return 'true';
 	}
 
 	public function getMyActivities($userName){
-		return $this->data->getMyActivities($userName);
-	}
-
-	public function getActivities(){
-		$activityList=$this->data->getActivities();
+		$activityList=$this->data->getMyActivities($userName);
 
 
 		$activityVOList=[];
+
 		foreach($activityList as $activity){
-			$activityVO=$this->calculate($activity);
+			$activityVO=new ActivityVO();
+			$this->calculate($activity,$activityVO);
+			$activityVO->partnerCount=$this->getPartnerCount($activity);
 			array_push($activityVOList,$activityVO);
 		}
 
@@ -69,15 +68,47 @@ class ActivityBl implements ActivityBlService {
 		return $activityVOList;
 	}
 
-	public function getActivity($activityId){
-		$activity=$this->data->getActivity($activityId);
+	public function getActivities(){
+		$activityList=$this->data->getActivities();
 
-		$activityVO=$this->calculate($activity);
-		return $activityVO;
+
+		$activityVOList=[];
+
+		foreach($activityList as $activity){
+			$activityVO=new ActivityVO();
+			$this->calculate($activity,$activityVO);
+			$activityVO->partnerCount=$this->getPartnerCount($activity);
+			array_push($activityVOList,$activityVO);
+		}
+
+
+
+		return $activityVOList;
 	}
 
 
-	private function calculate($activity){
+	public function getActivity($activityId){
+		$activity=$this->data->getActivity($activityId);
+		$activityVO=new ActivityDetailVO();
+		$this->calculate($activity,$activityVO);
+		return $activityVO;
+	}
+
+	private function getPartnerCount($activity){
+		$partnerList=$this->partnerBl->getPartner($activity->id);
+		if($partnerList==null)
+			return 1;
+		$count=$partnerList->count()+1;
+		return $count;
+	}
+
+	/**
+	 * 若未开始，计算开始时间与现在的差
+	 * 若已经开始，计算结束时间与现在的差
+	 * @param $activity
+	 * @param $activityVO
+	 */
+	private function calculate($activity,$activityVO){
 		$now=DateTool::today();
 		$isBegin='开始';
 
@@ -92,7 +123,9 @@ class ActivityBl implements ActivityBlService {
 			$result=DateTool::minus($activity->endTime,$now);
 		}
 
-		$activityVO=new ActivityVO($activity,$isBegin,$result['day'],$result['hour']);
-		return $activityVO;
+		$activityVO->activity=$activity;
+		$activityVO->isBegin=$isBegin;
+		$activityVO->day=$result['day'];
+		$activityVO->hour=$result['hour'];
 	}
 }

@@ -13,4 +13,6 @@ interface PartnerDataService{
 	public function addPartner($activityId,$userName);
 
 	public function getPartners($activityId);
+
+	public function getPartner($activityId,$username);
 }

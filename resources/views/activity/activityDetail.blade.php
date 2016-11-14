@@ -23,7 +23,7 @@
 
 		<script>
 			function joinActivity(id){
-				var url=getUrl('joinActivity',id);
+				var url=getUrl(['joinActivity',id]);
 				$.ajax({
 					type: "get",
 					url:url,
@@ -109,7 +109,7 @@
 							</div>
 
 							<div class="col-lg-5">
-								<h2><b>80</b><small>金币</small></h2>
+								<h2><b>{{$activityVO->activity->enterFee*$activityVO->partnerCount}}</b><small>金币</small></h2>
 								<h5>保证金:{{$activityVO->activity->enterFee}}，等差分配</h5>
 							</div>
 
@@ -129,7 +129,7 @@
 				</div>
 			</div>
 
-			@if($activityVO->isBegin=='开始')
+			@if($activityVO->isBegin=='结束')
 				<div class="row mt">
 					<div class="col-lg-12"><h2>当前战况</h2></div>
 

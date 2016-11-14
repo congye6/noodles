@@ -60,7 +60,7 @@
 
                                     <div class="col-lg-2 centered">
                                         <p class="title"><b>参与人数</b></p>
-                                        <h1><b>{{$activityVO->activity->id}}</b></h1>
+                                        <h1><b>{{$activityVO->partnerCount}}</b></h1>
                                     </div>
 
                                     <div class="col-lg-2 centered">
@@ -76,7 +76,7 @@
 
                                     <div class="col-lg-2 centered">
                                         <p class="title"><b>奖金</b></p>
-                                        <h1><b>{{$activityVO->activity->enterFee}}</b><small>金币</small></h1>
+                                        <h1><b>{{$activityVO->activity->enterFee*$activityVO->partnerCount}}</b><small>金币</small></h1>
                                     </div>
 
                                 </div>

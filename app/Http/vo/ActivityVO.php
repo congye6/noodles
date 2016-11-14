@@ -18,19 +18,9 @@ class ActivityVO{
 
 	public $hour;
 
-	/**
-	 * ActivityVO constructor.
-	 * @param $activity
-	 * @param $isBegin
-	 * @param $day
-	 * @param $hour
-	 */
-	public function __construct($activity, $isBegin, $day, $hour){
-		$this->activity = $activity;
-		$this->isBegin = $isBegin;
-		$this->day = $day;
-		$this->hour = $hour;
-	}
+	public $partnerCount;
+
+
 
 
 }

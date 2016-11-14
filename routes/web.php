@@ -30,7 +30,7 @@ Route::get('activities','Activity\ActivitiesController@activities')->middleware(
 Route::get('myActivity','Activity\MyActivityController@myActivity')->middleware('login');
 Route::get('publishActivity','Activity\PublishController@publishActivity')->middleware('login');
 Route::get('activityDetail/{activityId}','Activity\ActivitiesController@activity')->middleware('login');
-Route::get('joinActivity/{activityId}','Activity\ActivitiesController@activity')->middleware('login');
+Route::get('joinActivity/{activityId}','Activity\ActivitiesController@joinActivity')->middleware('login');
 Route::any('publish/{description}/{startTime}/{endTime}/{sportType}/{enterFee}','Activity\PublishController@publish')->middleware('login');
 
 
@@ -39,7 +39,8 @@ Route::any('publish/{description}/{startTime}/{endTime}/{sportType}/{enterFee}',
  */
 Route::any('comments','Friends\CommentsController@comments')->middleware('login');
 Route::any('fans','Friends\FansController@fans')->middleware('login');
-Route::any('followedFriends','Friends\FollowedController@followedFriends')->middleware('login');
+Route::get('followedFriends','Friends\FollowedController@followedFriends')->middleware('login');
+Route::get('cancelFollowed/{followed}','Friends\FollowedController@cancelFollowed')->middleware('login');
 
 /**
  * goal
@@ -51,7 +52,7 @@ Route::any('todo','Goal\TodoController@todo')->middleware('login');
 /**
  * user
  */
-Route::get('profile','User\ProfileController@profile')->middleware('login');
+Route::get('profile/{userName}','User\ProfileController@profile')->middleware('login');
 Route::get('loginPage','User\loginController@loginPage');
 Route::get('login/{userName}/{password}','User\LoginController@login');
 Route::get('register/{userName}/{password}','User\LoginController@register');

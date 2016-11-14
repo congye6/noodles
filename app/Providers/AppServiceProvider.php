@@ -39,6 +39,26 @@ class AppServiceProvider extends ServiceProvider{
 		    'App\Http\bussinessLogicService\impl\activity\PartnerBl'
 	    );
 
+	    $this->app->bind(
+		    'App\Http\bussinessLogicService\friends\FriendsBlService',
+		    'App\Http\bussinessLogicService\impl\friends\FriendsBl'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\bussinessLogicService\friends\MessageBlService',
+		    'App\Http\bussinessLogicService\impl\friends\MessageBl'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\bussinessLogicService\health\StepBlService',
+		    'App\Http\bussinessLogicService\impl\health\StepBl'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\bussinessLogicService\health\StepDetailBlService',
+		    'App\Http\bussinessLogicService\impl\health\StepDetailBl'
+	    );
+
 	    /**
 	     * data
 	     */
@@ -50,6 +70,31 @@ class AppServiceProvider extends ServiceProvider{
 	    $this->app->bind(
 		    'App\Http\dataService\activity\ActivityDataService',
 		    'App\Http\dataService\impl\activity\ActivityData'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\dataService\activity\PartnerDataService',
+		    'App\Http\dataService\impl\activity\PartnerData'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\dataService\friends\FriendsDataService',
+		    'App\Http\dataService\impl\friends\FriendsData'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\dataService\friends\MessageDataService',
+		    'App\Http\dataService\impl\friends\MessageData'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\dataService\health\StepDataService',
+		    'App\Http\dataService\impl\health\StepData'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\dataService\health\StepDetailDataService',
+		    'App\Http\dataService\impl\health\StepDetailData'
 	    );
 
 

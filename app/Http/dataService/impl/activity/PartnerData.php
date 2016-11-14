@@ -14,11 +14,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class PartnerData extends Model  implements PartnerDataService {
 
-	public function addPartner($activityId,$userName){
+	protected $table = 'Partner';
 
+	protected $fillable = ['activityId','partner'];
+
+	public function addPartner($activityId,$userName){
+		PartnerData::create(['activityId'=>$activityId,'partner'=>$userName]);
 	}
 
 	public function getPartners($activityId){
 
+		return PartnerData::where('activityId',$activityId);
+	}
+
+	public function getPartner($activityId,$username){
+		return PartnerData::where([['activityId',$activityId],['partner',$username]])->get();
 	}
 }

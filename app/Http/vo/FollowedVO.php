@@ -9,10 +9,28 @@
 namespace App\Http\vo;
 
 
+use App\Http\tool\StringTool;
+
 class FollowedVO{
 
 
-	public $userId;
+	public $userName;
 
-	public $followedUser;
+	public $followed;
+
+	/**
+	 * FollowedVO constructor.
+	 * @param $userId
+	 * @param $followedUser
+	 */
+	public function __construct($userId, $followedUser){
+		$this->userName = $userId;
+		$this->followed = $followedUser;
+	}
+
+	public function isNull(){
+		return StringTool::isNull($this->userName)||StringTool::isNull($this->followed);
+	}
+
+
 }

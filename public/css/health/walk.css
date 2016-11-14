@@ -1,0 +1,107 @@
+.circliful {
+    position: relative;
+}
+
+.circle-text, .circle-info, .circle-text-half, .circle-info-half {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+}
+
+.circle-info, .circle-info-half {
+    color: #999;
+}
+
+.circliful .fa {
+    margin: -10px 3px 0 3px;
+    position: relative;
+    bottom: 4px;
+}
+
+
+.corner{
+    border-top-right-radius:15px;
+    border-top-left-radius:15px;
+    border-bottom-left-radius:15px;
+    border-bottom-right-radius:15px;
+    border:1px solid RGB(208,208,208);
+    box-shadow: 0px 5px 5px RGB(241,241,241), 0px -5px 5px RGB(241,241,241),
+    5px 0px 5px RGB(241,241,241), -5px 0px 5px RGB(241,241,241);
+}
+
+.info{
+    height:150px;
+    color:white;
+}
+
+.info img{
+    position:relative;
+    top:25px;
+    left:10px;
+    height:100px;
+    width:100px;
+}
+
+.info h2{
+    font-family: "Roboto", "Arial", sans-serif;
+    font-weight: 800;
+    position:relative;
+    font-size:45px;
+    color:white;
+    border:none;
+    left:130px;
+    bottom: 60%;
+}
+
+.info h3{
+    font-family: "Roboto", "Arial", sans-serif;
+    font-weight: 800;
+    position:relative;
+    font-size:25px;
+    color: rgba(255, 255, 255, 0.5);
+    border:none;
+    left:130px;
+    bottom: 65%;
+}
+
+.info small{
+    color:white;
+}
+
+.pink{
+    background-color:#d98d98 ;
+}
+
+.blue{
+    background-color: #3fa6ca;
+}
+
+.green{
+    background-color: #58a09b;
+}
+.gray{
+    background-color: #3f4e62;
+}
+
+img.detail{
+    width:150px;
+    height:150px;
+}
+
+.detail h1{
+    font-family: "Roboto", "Arial", sans-serif;
+    font-weight: 800;
+    font-size:60px;
+    border:none;
+}
+
+.line{
+    position: relative;
+    left:75px;
+    width:1px;
+    height:80px;
+    background-color: grey;
+}
+
+
