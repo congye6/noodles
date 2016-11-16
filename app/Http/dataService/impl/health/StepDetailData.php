@@ -15,13 +15,14 @@ class StepDetailData extends Model  implements StepDetailDataService {
 
 	protected $table = 'StepInMinute';
 
-	protected $fillable = ['userName','date','time','step','walkTime','heat'];
+	protected $fillable = ['userName','date','time','step','walkTime','heat','distance'];
 
 	public function getStepsInMinute($userName,$date){
 		return StepDetailData::where([['userName',$userName],['date',$date]])->get();
 	}
 
 	public function addStepsInMinute(StepVO $stepVO){
+
 		StepDetailData::create(ObjectTool::objectToArray($stepVO));
 	}
 

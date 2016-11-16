@@ -11,7 +11,7 @@ namespace App\Http\tool;
 
 class DateTool{
 	static public function isPast($time){
-		return strtotime($time)<strtotime(self::today());
+		return strtotime($time)<strtotime(self::now());
 	}
 
 	static public function isLatter($end,$start){
@@ -20,8 +20,12 @@ class DateTool{
 
 
 
-	static public function today(){
+	static public function now(){
 		return date('Y-m-d H:i',time()+8*3600);
+	}
+
+	static public function today(){
+		return date('Y-m-d',time()+8*3600);
 	}
 
 	/**

@@ -18,7 +18,8 @@ Route::get('/', function () {
 /**
  * health
  */
-Route::any('getHealthInfo','Health\InfoController@getHealthInfo')->middleware('login');
+
+Route::any('getStepInMinute/{date}','Health\WalkController@getHealthInfo')->middleware('login');
 Route::any('getWalkInfo','Health\WalkController@getWalkInfo')->middleware('login');
 Route::any('getBodyInfo','Health\BodyController@getBodyInfo')->middleware('login');
 Route::any('getSleepInfo','Health\SleepController@getSleepInfo')->middleware('login');

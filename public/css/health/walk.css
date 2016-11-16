@@ -105,3 +105,18 @@ img.detail{
 }
 
 
+.chart{
+    min-height: 330px;
+    width:98%;
+    position: relative;
+    left:1%;
+}
+
+#complete{
+    min-height: 330px;
+    position:relative;
+    top:45px;
+    left:20%;
+}
+
+

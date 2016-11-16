@@ -24,18 +24,51 @@
     @section('js')
         @@parent
         <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+        <script src="/js/Highcharts-4.2.5/js/highcharts.js"></script>
 
         {{--set data--}}
-        <script src="assets/js/morris-conf.js"></script>
+        <script src="/js/chart/bar.js"></script>
         <script src="/js/health/circle.js"></script>
 
         <script>
             $(function () {
                 $('#complete').circliful();
 
+                stepInMinute();
             })
 
+            function stepInMinute(){
+                stepInMinute(null);
+            }
+
+            function stepInMinute(date){
+                var series=[];
+                var data=[];
+                data.push([Date.UTC(0,0,0,11,20),23]);
+                data.push([Date.UTC(0,0,0,12,20),73]);
+                data.push([Date.UTC(0,0,0,17,20),730]);
+                data.push([Date.UTC(0,0,0,9,20),23]);
+                data.push([Date.UTC(0,0,0,2,20),73]);
+                data.push([Date.UTC(0,0,0,7,20),730]);
+                data.push([Date.UTC(0,0,0,1,20),23]);
+                data.push([Date.UTC(0,0,0,8,20),73]);
+                data.push([Date.UTC(0,0,0,20,20),730]);
+
+                data.push([Date.UTC(0,0,0,11,40),230]);
+                data.push([Date.UTC(0,0,0,12,40),730]);
+                data.push([Date.UTC(0,0,0,17,40),73]);
+                data.push([Date.UTC(0,0,0,9,40),230]);
+                data.push([Date.UTC(0,0,0,2,40),730]);
+                data.push([Date.UTC(0,0,0,7,40),73]);
+                data.push([Date.UTC(0,0,0,1,40),230]);
+                data.push([Date.UTC(0,0,0,8,40),730]);
+                data.push([Date.UTC(0,0,0,20,40),73]);
+                series.push({
+                    name:'行走步数',
+                    data:data
+                });
+                bar('stepInMinute','步数分布图',series);
+            }
 
         </script>
     @endsection
@@ -84,7 +117,7 @@
                             <div class="col-md-3">
                                 <div class="corner info pink">
                                     <img src="/graphics/health/step.svg">
-                                    <h2>12345</h2>
+                                    <h2>{{$stepTotal->step}}</h2>
                                     <h3>运动步数</h3>
                                 </div>
                             </div>
@@ -92,7 +125,7 @@
                             <div class="col-md-3">
                                 <div class="corner info blue">
                                     <img src="/graphics/health/distance.svg">
-                                    <h2>2.4<small>km</small></h2>
+                                    <h2>{{$stepTotal->distance}}<small>km</small></h2>
                                     <h3>运动距离</h3>
                                 </div>
                             </div>
@@ -100,7 +133,7 @@
                             <div class="col-md-3">
                                 <div class="corner info green">
                                     <img src="/graphics/health/hot.svg">
-                                    <h2>12233<small>cal</small></h2>
+                                    <h2>{{$stepTotal->heat}}<small>cal</small></h2>
                                     <h3>消耗热量</h3>
                                 </div>
                             </div>
@@ -108,7 +141,7 @@
                             <div class="col-md-3">
                                 <div class="corner info gray">
                                     <img src="/graphics/health/time.svg">
-                                    <h2>1<small>h</small>33<small>min</small></h2>
+                                    <h2>{{$stepTotal->hour}}<small>h</small>{{$stepTotal->minute}}<small>min</small></h2>
                                     <h3>运动时长</h3>
                                 </div>
                             </div>
@@ -116,29 +149,42 @@
                         </div>
 
                         <div class="row mt">
-                            <!--步数-->
+                            <div class="col-lg-12">
+                                <!--运动步数-->
+
+                                <div class="corner" style="background-color: white">
+                                    <div id="stepInMinute" class="chart">
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="row mt">
+                            <!--完成目标百分比-->
                             <div class="col-lg-4">
-                                <div class="content-panel">
-                                    <div class="panel-body">
-                                        <div id="hero-area" class="graph"></div>
+                                <div class="corner" style="background-color: white">
+                                    <div id="complete"  data-dimension="250" data-text="35%" data-info="New Clients"
+                                         data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#61a9dc" data-bgcolor="#eee">
                                     </div>
                                 </div>
                             </div>
 
-                            <!--距离-->
+                            <!--每个时间段所占百分比-->
                             <div class="col-lg-4">
-                                <div class="content-panel">
-                                    <div class="panel-body">
-                                        <div id="hero-area2" class="graph"></div>
+                                <div class="corner" style="background-color: white">
+                                    <div id="percent" class="chart">
                                     </div>
                                 </div>
                             </div>
 
-                            <!--卡路里-->
+                            <!--历史数据-->
                             <div class="col-lg-4">
-                                <div class="content-panel">
-                                    <div class="panel-body">
-                                        <div id="hero-bar" class="graph"></div>
+                                <div class="corner" style="background-color: white">
+                                    <div id="history" class="chart">
                                     </div>
                                 </div>
                             </div>
