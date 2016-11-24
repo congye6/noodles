@@ -31,7 +31,7 @@ class WalkController extends Controller {
 	}
 
 	public function getStepInMinute($date){
-		return $this->stepDetailBl-$this->getStepsInMinute($_COOKIE['userName'],$date);
+		return $this->stepDetailBl->getTodayStepsInMinute($_COOKIE['userName'],$date);
 	}
 
 

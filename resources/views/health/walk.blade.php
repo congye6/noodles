@@ -34,40 +34,48 @@
             $(function () {
                 $('#complete').circliful();
 
-                stepInMinute();
+                stepInMinute('today');
             })
 
-            function stepInMinute(){
-                stepInMinute(null);
-            }
+
 
             function stepInMinute(date){
-                var series=[];
-                var data=[];
-                data.push([Date.UTC(0,0,0,11,20),23]);
-                data.push([Date.UTC(0,0,0,12,20),73]);
-                data.push([Date.UTC(0,0,0,17,20),730]);
-                data.push([Date.UTC(0,0,0,9,20),23]);
-                data.push([Date.UTC(0,0,0,2,20),73]);
-                data.push([Date.UTC(0,0,0,7,20),730]);
-                data.push([Date.UTC(0,0,0,1,20),23]);
-                data.push([Date.UTC(0,0,0,8,20),73]);
-                data.push([Date.UTC(0,0,0,20,20),730]);
+                var url=getUrl(['getStepInMinute',date]);
+                //获取数据
+                $.ajax({
+                    type: "get",
+                    url:url,
+                    data:'',
+                    success: function (data) {
+                        var series=[];
+                        var steps=[];
+                        var heats=[];
 
-                data.push([Date.UTC(0,0,0,11,40),230]);
-                data.push([Date.UTC(0,0,0,12,40),730]);
-                data.push([Date.UTC(0,0,0,17,40),73]);
-                data.push([Date.UTC(0,0,0,9,40),230]);
-                data.push([Date.UTC(0,0,0,2,40),730]);
-                data.push([Date.UTC(0,0,0,7,40),73]);
-                data.push([Date.UTC(0,0,0,1,40),230]);
-                data.push([Date.UTC(0,0,0,8,40),730]);
-                data.push([Date.UTC(0,0,0,20,40),73]);
-                series.push({
-                    name:'行走步数',
-                    data:data
+                        $.each(data,function(i,vo){
+                            var time=timeToUtc(vo.time);
+
+                            steps.push([time,parseInt(vo.step)]);
+                            heats.push([time,parseInt(vo.heat)]);
+                        });
+
+                        series.push({
+                            name:'行走步数',
+                            data:steps
+                        });
+
+                        series.push({
+                            name:'热量',
+                            data:heats
+                        });
+                        bar('stepInMinute','步数分布图',series);
+                    }
                 });
-                bar('stepInMinute','步数分布图',series);
+            }
+
+            function timeToUtc(time){
+                var arr=time.split(':');
+                var utc=Date.UTC(0,0,0,arr[0],arr[1]);
+                return utc;
             }
 
         </script>

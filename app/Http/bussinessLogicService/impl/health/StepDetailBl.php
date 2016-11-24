@@ -21,7 +21,8 @@ class StepDetailBl implements StepDetailBlService {
 	}
 
 	public function getTodayStepsInMinute($userName,$date){
-		if($date==null)
+
+		if($date=='today')
 			$date=DateTool::today();
 		$stepList=$this->data->getStepsInMinute($userName,$date);
 		return $stepList;
