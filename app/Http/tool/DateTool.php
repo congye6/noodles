@@ -29,6 +29,22 @@ class DateTool{
 	}
 
 	/**
+	 * 包括边界值
+	 * @param $date
+	 * @param $startDate
+	 * @param $endDate
+	 * @return bool
+	 */
+	static public function isBetween($date,$startDate,$endDate){
+		if(self::isLatter($endDate,$date))
+			return false;
+		if(self::isLatter($date,$startDate))
+			return false;
+
+		return true;
+	}
+
+	/**
 	 * 计算两个时间相差多少天多少小时
 	 * @param $startTime
 	 * @param $endTime

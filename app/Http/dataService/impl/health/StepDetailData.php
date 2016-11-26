@@ -22,7 +22,6 @@ class StepDetailData extends Model  implements StepDetailDataService {
 	}
 
 	public function addStepsInMinute(StepVO $stepVO){
-
 		StepDetailData::create(ObjectTool::objectToArray($stepVO));
 	}
 

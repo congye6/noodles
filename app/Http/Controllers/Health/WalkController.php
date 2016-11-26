@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Health;
 use App\Http\bussinessLogicService\health\StepBlService;
 use App\Http\bussinessLogicService\health\StepDetailBlService;
 use App\Http\Controllers\Controller;
+use App\Http\tool\DateTool;
 
 class WalkController extends Controller {
 
@@ -26,12 +27,22 @@ class WalkController extends Controller {
 
 	public function getWalkInfo(){
 
-		$stepTotalVO=$this->stepDetailBl->getTodayStepsInTotal($_COOKIE["userName"]);
-		return view('health.walk')->with('stepTotal',$stepTotalVO);
+		$stepTotalVO=$this->stepBl->getStepsByDay($_COOKIE["userName"],DateTool::today());
+
+		$mainStep=$this->stepDetailBl->getTodayMainSteps($_COOKIE["userName"],DateTool::today());
+		return view('health.walk')->with(['stepTotal'=>$stepTotalVO,'mainStep'=>$mainStep]);
 	}
 
 	public function getStepInMinute($date){
 		return $this->stepDetailBl->getTodayStepsInMinute($_COOKIE['userName'],$date);
+	}
+
+	public function getStepRate($date){
+		return $this->stepDetailBl->stepRate($_COOKIE['userName'],$date);
+	}
+
+	public function stepHistory(){
+		return $this->stepBl->getHistorySteps($_COOKIE['userName']);
 	}
 
 

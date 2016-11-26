@@ -14,19 +14,17 @@
 
 @section('css')
     @@parent
-    <script src="assets/js/chart-master/Chart.js"></script>
-    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+
+    <link rel="stylesheet" href="/css/health/box.css">
 @endsection
 
 @section('js')
     @@parent
     <script src="assets/js/jquery.sparkline.js"></script>
     <script src="assets/js/sparkline-chart.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
 
     {{--set data--}}
-    <script src="assets/js/sleep-morris-conf.js"></script>
+    <script src="/js/Highcharts-4.2.5/js/highcharts.js"></script>
 @endsection
 
 
@@ -34,33 +32,43 @@
 @section('main-content')
         <div class="wrapper site-min-height">
             <div class="row mt">
-                <div class="col-md-12 col-sm-12 mb">
-                    <div class="green-panel pn">
-                        <div class="green-header">
-                            <h5>身体情况</h5>
-                        </div>
-                        <canvas id="serverstatus03" height="120" width="120"></canvas>
-                        <script>
-                            var doughnutData = [
-                                {
-                                    value: 60,
-                                    color:"#2b2b2b"
-                                },
-                                {
-                                    value : 40,
-                                    color : "#fffffd"
-                                }
-                            ];
-                            var myDoughnut = new Chart(document.getElementById("serverstatus03").getContext("2d")).Doughnut(doughnutData);
-                        </script>
-                        <h3>60% USED</h3>
+                <div class="col-md-3">
+                    <div class="corner info pink">
+                        <img src="/graphics/health/weight.svg">
+                        <h2>123<small>kg</small></h2>
+                        <h3>体重</h3>
                     </div>
-                </div><! --/col-md-4 -->
+                </div>
+
+                <div class="col-md-3">
+                    <div class="corner info blue">
+                        <img src="/graphics/health/weight.svg">
+                        <h2>123<small>kg</small></h2>
+                        <h3>目标体重</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="corner info green">
+                        <img src="/graphics/health/height.svg">
+                        <h2>175.5<small>cm</small></h2>
+                        <h3>身高</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="corner info gray">
+                        <img src="/graphics/health/bmi.svg">
+                        <h2>18.4</h2>
+                        <h3>bmi</h3>
+                    </div>
+                </div>
+
             </div>
 
 
 
-            <div class="row">
+            <div class="row mt">
                 <div class="col-md-12">
                     <form class="form-horizontal tasi-form" method="get">
                         <div class="form-group has-success">
@@ -84,37 +92,7 @@
 
                 </div>
             </div>
-            <!--set goal-->
-            <div class="row mt">
-                <!--select day-->
-                <div class="col-md-2">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-theme03">今天</button>
-                        <button type="button" class="btn btn-theme03 dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 col-md-offset-5">
-                    <div class="form-group">
-                        <label class="sr-only" for="exampleInputPassword2">Password</label>
-                        <input type="text" class="form-control" id="exampleInputPassword2" placeholder="30000步">
-                    </div>
 
-                </div>
-                <div class="col-md-1">
-                    <button type="submit" class="btn btn-theme">更改</button>
-                </div>
-
-            </div>
 
             <!--statistic-->
             <div id="morris">

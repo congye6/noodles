@@ -20,6 +20,8 @@ Route::get('/', function () {
  */
 
 Route::any('getStepInMinute/{date}','Health\WalkController@getStepInMinute')->middleware('login');
+Route::any('getStepRate/{date}','Health\WalkController@getStepRate')->middleware('login');
+Route::any('stepHistory','Health\WalkController@stepHistory')->middleware('login');
 Route::any('getWalkInfo','Health\WalkController@getWalkInfo')->middleware('login');
 Route::any('getBodyInfo','Health\BodyController@getBodyInfo')->middleware('login');
 Route::any('getSleepInfo','Health\SleepController@getSleepInfo')->middleware('login');

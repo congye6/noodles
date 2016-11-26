@@ -21,7 +21,7 @@ class StepDetailBl implements StepDetailBlService {
 	}
 
 	public function getTodayStepsInMinute($userName,$date){
-
+//		$this->createData($userName);
 		if($date=='today')
 			$date=DateTool::today();
 		$stepList=$this->data->getStepsInMinute($userName,$date);
@@ -37,20 +37,45 @@ class StepDetailBl implements StepDetailBlService {
 		return $stepTotal;
 	}
 
+
+	public function stepRate($userName,$date){
+		$stepList=$this->getTodayStepsInMinute($userName,$date);
+		$stepStatistic=array(0,0,0,0);
+		foreach ($stepList as $step){
+			$hour=explode(':',$step->time)[0];
+			$stepStatistic[intval($hour/6)]=$stepStatistic[intval($hour/6)]+$step->step;
+		}
+		return $stepStatistic;
+	}
+
 	/**
-	 * 返回20分钟内行走大于500步的stepvo
-	 * 相邻时间要进行合并
+	 * 返回20分钟内行走大于200步的stepvo
+	 * TODO:相邻时间要进行合并
 	 * @param $userName
 	 * @return mixed
 	 */
-	public function getTodayMainSteps($userName){
+	public function getTodayMainSteps($userName,$date){
+		$stepList=$this->getTodayStepsInMinute($userName,$date);
+		$stepStatistic=array();
+		$hourArray=array();
+		foreach ($stepList as $step){
+			if($step->step>200){
+				//按时间排序
+				$hour=explode(':',$step->time)[0];
+				array_push($hourArray,(int)$hour);
+				array_push($stepStatistic,$step);
+				array_multisort($hourArray,$stepStatistic);
+			}
 
+
+		}
+		return $stepStatistic;
 	}
 
 	private function createData($userName){
 		for($i=0;$i<10;$i++){
 			$hour=mt_rand(0,23);
-			$minute=mt_rand(0,60);
+			$minute=mt_rand(0,2)*20;
 			$time=$hour.':'.$minute;
 			$this->data->addStepsInMinute(new StepVO($userName,mt_rand(50,2000),DateTool::today(),mt_rand(1,20),mt_rand(500,1000),mt_rand(200,1000),$time));
 		}

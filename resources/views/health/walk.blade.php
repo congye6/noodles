@@ -17,17 +17,20 @@
 
     @section('css')
         @@parent
-        <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
         <link rel="stylesheet" href="/css/health/walk.css">
+        <link rel="stylesheet" href="/css/health/box.css">
     @endsection
 
     @section('js')
         @@parent
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
         <script src="/js/Highcharts-4.2.5/js/highcharts.js"></script>
 
         {{--set data--}}
         <script src="/js/chart/bar.js"></script>
+        <script src="/js/chart/pie.js"></script>
+        <script src="/js/chart/area.js"></script>
+        <script src="/js/chart/utcTool.js"></script>
         <script src="/js/health/circle.js"></script>
 
         <script>
@@ -35,7 +38,49 @@
                 $('#complete').circliful();
 
                 stepInMinute('today');
+                stepRate('today');
+                stepHistory();
             })
+
+            function stepHistory(){
+                //获取数据
+                $.ajax({
+                    type: "get",
+                    url: 'stepHistory',
+                    data: '',
+                    success: function (data) {
+                        var series=[];
+                        var steps=[];
+
+                        $.each(data,function(i,vo){
+                            var day=dateToUtc(vo.date);
+
+                            steps.push([day,parseInt(vo.step)]);
+
+                        });
+
+                        series.push({
+                            name:'行走步数',
+                            data:steps
+                        });
+
+                        area('history','历史行走步数',series);
+                    }
+                });
+            }
+
+            function stepRate(date){
+                var url=getUrl(['getStepRate',date]);
+                //获取数据
+                $.ajax({
+                    type: "get",
+                    url: url,
+                    data: '',
+                    success: function (data) {
+                        pieChart('行走步数分布','percent',['凌晨','早上','下午','晚上'],data);
+                    }
+                });
+            }
 
 
 
@@ -72,11 +117,7 @@
                 });
             }
 
-            function timeToUtc(time){
-                var arr=time.split(':');
-                var utc=Date.UTC(0,0,0,arr[0],arr[1]);
-                return utc;
-            }
+
 
         </script>
     @endsection
@@ -206,69 +247,35 @@
             </div>
 
 
+            @foreach($mainStep as $step)
+                <div class="row mt">
 
-            <div class="row mt">
+                    <div class="col-md-1 col-md-offset-1">
+                        <img class='detail' src="/graphics/health/walk.svg">
+                    </div>
+                    <div class="col-md-9 col-md-offset-1 detail">
+                        <h3>{{$step->time}}步行</h3>
+                        <h1><b>{{$step->step}}</b><small>步</small>&nbsp;&nbsp;&nbsp;&nbsp;<b>{{$step->walkTime}}</b><small>分钟</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{$step->distance}}</b>
+                            <small>km</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{$step->heat}}</b><small>cal</small></h1>
+                    </div>
 
-                <div class="col-md-1 col-md-offset-1">
-                    <img class='detail' src="/graphics/health/walk.svg">
                 </div>
-                <div class="col-md-9 col-md-offset-1 detail">
-                    <h3>13:11&nbsp;~&nbsp;13:10步行</h3>
-                    <h1><b>1566</b><small>步</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>15</b><small>分钟</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>1.2</b>
-                        <small>km</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>36</b><small>cal</small></h1>
-                </div>
 
-            </div>
+                <div class="row">
+                    <div class="col-md-1 col-md-offset-1">
+                        <div class="line">
 
-            <div class="row">
-                <div class="col-md-1 col-md-offset-1">
-                    <div class="line">
+
+                        </div>
 
 
                     </div>
 
-
                 </div>
 
-            </div>
-
-            <div class="row mt">
-
-                <div class="col-md-1 col-md-offset-1">
-                    <img class='detail' src="/graphics/health/walk.svg">
-                </div>
-                <div class="col-md-9 col-md-offset-1 detail">
-                    <h3>13:11&nbsp;~&nbsp;13:10步行</h3>
-                    <h1><b>1566</b><small>步</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>15</b><small>分钟</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>1.2</b>
-                        <small>km</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>36</b><small>cal</small></h1>
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-md-1 col-md-offset-1">
-                    <div class="line">
+            @endforeach
 
 
-                    </div>
-
-
-                </div>
-
-            </div>
-
-            <div class="row mt">
-
-                <div class="col-md-1 col-md-offset-1">
-                    <img class='detail' src="/graphics/health/walk.svg">
-                </div>
-                <div class="col-md-9 col-md-offset-1 detail">
-                    <h3>13:11&nbsp;~&nbsp;13:10步行</h3>
-                    <h1><b>1566</b><small>步</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>15</b><small>分钟</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>1.2</b>
-                        <small>km</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>36</b><small>cal</small></h1>
-                </div>
-
-            </div>
 
         </section>
     @endsection

@@ -14,5 +14,7 @@ interface StepDataService{
 
 	public function addStepsInDay(StepVO $StepsVO);
 
+	public function getSteps($date,$userName);
+
 
 }
