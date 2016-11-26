@@ -1,0 +1,39 @@
+input.form-control{
+    position:relative;
+    right:40px;
+}
+
+label.control-label{
+    position:relative;
+    font-size: 20px;
+    bottom:5px;
+}
+
+.history{
+    height:80px;
+    font-family: "Roboto", "Arial", sans-serif;
+    color: white;
+}
+
+.history img{
+    position:relative;
+    width:60px;
+    height:60px;
+    left:10px;
+    top:10px;
+}
+
+.history h4{
+
+}
+
+.history h2{
+    position:relative;
+    font-weight: 800;
+    bottom:10px;
+}
+
+.history small{
+
+    color: white;
+}
