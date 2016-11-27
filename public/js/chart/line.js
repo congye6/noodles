@@ -1,7 +1,7 @@
 /**
  * Created by st0001 on 2016-11-16.
  */
-function lineChart(htmlId,series,title) {
+function lineChart(htmlId,title,series) {
     var chart=new Highcharts.Chart({
 
         title: {

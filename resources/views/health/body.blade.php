@@ -22,6 +22,87 @@
     @@parent
     {{--set data--}}
     <script src="/js/Highcharts-4.2.5/js/highcharts.js"></script>
+    <script src="/js/chart/utcTool.js"></script>
+    <script src="/js/chart/line.js"></script>
+
+    <script>
+        $(function () {
+           bodyLineChart();
+        });
+
+
+        function bodyLineChart(){
+            //获取数据
+            $.ajax({
+                type: "get",
+                url: 'lineChartData',
+                data: '',
+                success: function (data) {
+
+                    var series=[];
+                    var weights=[];
+                    var goals=[];
+
+                    $.each(data,function(i,vo){
+                        var day=dateToUtc(vo.date);
+
+                        weights.push([day,parseFloat(vo.weight)]);
+                        goals.push([day,parseFloat(vo.goal)]);
+
+                    });
+
+                    series.push({
+                        name:'体重',
+                        data:weights
+                    });
+
+                    series.push({
+                        name:'目标体重',
+                        data:goals
+                    });
+
+                    lineChart('history','体重统计',series);
+                }
+            });
+        }
+
+        function updateBodyInfo(){
+            var height=$('.col-lg-1 #inputSuccess').eq(0).val();
+            var weight=$('.col-lg-1 #inputSuccess').eq(1).val();
+            var goal=$('.col-lg-1 #inputSuccess').eq(2).val();
+
+            if(height==''||weight==''||goal==''){
+                zeroModal.error('请输入全部数据');
+                return;
+            }
+
+            if(height>250||height<50){
+                zeroModal.error('身高是不是填错了');
+                return;
+            }
+
+            if(weight>300||weight<10||goal>300||goal<30){
+                zeroModal.error('体重是不是填错了');
+                return;
+            }
+
+
+
+
+            $.ajax({
+                type: "get",
+                url: 'lineChartData',
+                data: '',
+                success: function (data) {
+
+                }
+
+            });
+        }
+
+
+    </script>
+
 @endsection
 
 
@@ -32,7 +113,7 @@
                 <div class="col-md-3">
                     <div class="corner info pink">
                         <img src="/graphics/health/weight.svg">
-                        <h2>123<small>kg</small></h2>
+                        <h2>{{$todayInfo->weight}}<small>kg</small></h2>
                         <h3>体重</h3>
                     </div>
                 </div>
@@ -40,7 +121,7 @@
                 <div class="col-md-3">
                     <div class="corner info blue">
                         <img src="/graphics/health/weight.svg">
-                        <h2>123<small>kg</small></h2>
+                        <h2>{{$todayInfo->goal}}<small>kg</small></h2>
                         <h3>目标体重</h3>
                     </div>
                 </div>
@@ -48,7 +129,7 @@
                 <div class="col-md-3">
                     <div class="corner info green">
                         <img src="/graphics/health/height.svg">
-                        <h2>175.5<small>cm</small></h2>
+                        <h2>{{$todayInfo->height}}<small>cm</small></h2>
                         <h3>身高</h3>
                     </div>
                 </div>
@@ -56,8 +137,25 @@
                 <div class="col-md-3">
                     <div class="corner info gray">
                         <img src="/graphics/health/bmi.svg">
-                        <h2>18.4</h2>
+                        <h2>{{$todayInfo->bmi}}</h2>
                         <h3>bmi</h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <!--statistic-->
+
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="corner" style="background-color: white">
+                        <div id="history" class="chart">
+                        </div>
                     </div>
                 </div>
 
@@ -67,9 +165,9 @@
 
             <div class="row mt">
                 <div class="col-md-12">
-                    <form class="form-horizontal tasi-form" method="get">
+                    <div class="form-horizontal tasi-form">
                         <div class="form-group has-success">
-                            <label class="col-sm-1 control-label col-lg-1" >身高</label>
+                            <label class="col-sm-1 col-md-offset-2 control-label col-lg-1" >身高</label>
                             <div class="col-lg-1">
                                 <input type="text" class="form-control" id="inputSuccess">
                             </div>
@@ -79,85 +177,63 @@
                                 <input type="text" class="form-control" id="inputSuccess">
                             </div>
 
-                            <label class="col-sm-1 control-label col-lg-1" >目标体重</label>
+                            <label class="col-sm-1 control-label col-lg-1" >目标</label>
                             <div class="col-lg-1">
                                 <input type="text" class="form-control" id="inputSuccess">
                             </div>
-
-                            <div class="col-md-1"><button type="submit" class="btn btn-theme">保存</button></div>
-
-                            <div class="col-md-4"><h4>根据身高计算,步长：64厘米</h4></div>
+                            <div class="col-md-1"><button  class="btn btn-theme" onclick="updateBodyInfo()">保存</button></div>
 
                         </div>
-                    </form>
+                    </div>
 
 
                 </div>
             </div>
 
 
-            <!--statistic-->
-            <div id="morris">
-                <div class="row">
+            @foreach($history as $info)
+                <div class="row mt">
                     <div class="col-md-12">
-
                         <div class="row mt">
-                            <!--睡眠-->
-                            <div class="col-lg-12">
-                                <div class="content-panel">
-                                    <div class="panel-body">
-                                        <div id="hero-area" class="graph"></div>
-                                    </div>
-                                </div>
+                            <div class="col-md-offset-2 col-md-12">
+                                <p>{{$info->time}}记录</p>
                             </div>
-
                         </div>
 
-                    </div>
-
-                </div>
-            </div>
-
-
-
-            <div class="row mt">
-                <div class="col-md-12">
-                    <div class="row mt">
-                        <div class="col-md-offset-2 col-md-12">
-                            <p>2016-11-12 13:04记录</p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-offset-2 col-md-8">
-                            <div class="blue history corner">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="/graphics/health/weight.svg">
-                                    </div>
-                                    <div class="col-md-offset-1 col-md-2">
-                                        <h4>体重</h4>
-                                        <h2>55.5<small>kg</small></h2>
-                                    </div>
-                                    <div class="col-md-offset-1 col-md-2">
-                                        <h4>变化率</h4>
-                                        <h2><i class="fa fa-arrow-down"></i>3<small>%</small></h2>
-                                    </div>
-                                    <div class="col-md-offset-1 col-md-2">
-                                        <h4>离目标体重差</h4>
-                                        <h2>4.8<small>kg</small></h2>
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-8">
+                                <div class="blue history corner">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <img src="/graphics/health/weight.svg">
+                                        </div>
+                                        <div class="col-md-offset-1 col-md-2">
+                                            <h4>体重</h4>
+                                            <h2>{{$info->weight}}<small>kg</small></h2>
+                                        </div>
+                                        <div class="col-md-offset-1 col-md-2">
+                                            <h4>变化率</h4>
+                                            <h2>
+                                                @if($info->isIncrease)
+                                                    <i class="fa fa-arrow-up"></i>
+                                                @else
+                                                    <i class="fa fa-arrow-down"></i>
+                                                @endif
+                                                {{$info->rate}}<small>%</small></h2>
+                                        </div>
+                                        <div class="col-md-offset-1 col-md-2">
+                                            <h4>离目标体重差</h4>
+                                            <h2>{{$info->gap}}<small>kg</small></h2>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-
                 </div>
-            </div>
-
-
+            @endforeach
         </div>
-
 
 
 

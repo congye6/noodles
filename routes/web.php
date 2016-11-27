@@ -24,6 +24,7 @@ Route::any('getStepRate/{date}','Health\WalkController@getStepRate')->middleware
 Route::any('stepHistory','Health\WalkController@stepHistory')->middleware('login');
 Route::any('getWalkInfo','Health\WalkController@getWalkInfo')->middleware('login');
 Route::any('getBodyInfo','Health\BodyController@getBodyInfo')->middleware('login');
+Route::any('lineChartData','Health\BodyController@lineChartData')->middleware('login');
 Route::any('getSleepInfo','Health\SleepController@getSleepInfo')->middleware('login');
 
 /**

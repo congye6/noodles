@@ -59,6 +59,11 @@ class AppServiceProvider extends ServiceProvider{
 		    'App\Http\bussinessLogicService\impl\health\StepDetailBl'
 	    );
 
+	    $this->app->bind(
+		    'App\Http\bussinessLogicService\health\BodyBlService',
+		    'App\Http\bussinessLogicService\impl\health\BodyBl'
+	    );
+
 	    /**
 	     * data
 	     */
@@ -95,6 +100,11 @@ class AppServiceProvider extends ServiceProvider{
 	    $this->app->bind(
 		    'App\Http\dataService\health\StepDetailDataService',
 		    'App\Http\dataService\impl\health\StepDetailData'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\dataService\health\BodyDataService',
+		    'App\Http\dataService\impl\health\BodyData'
 	    );
 
 
