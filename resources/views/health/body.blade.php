@@ -71,6 +71,8 @@
             var weight=$('.col-lg-1 #inputSuccess').eq(1).val();
             var goal=$('.col-lg-1 #inputSuccess').eq(2).val();
 
+            var token='{{csrf_token()}}';
+
             if(height==''||weight==''||goal==''){
                 zeroModal.error('请输入全部数据');
                 return;
@@ -86,15 +88,19 @@
                 return;
             }
 
-
-
-
+            var url=getUrl(['bodyInfo',weight,height,goal]);
             $.ajax({
-                type: "get",
-                url: 'lineChartData',
-                data: '',
+                type: "post",
+                url: url,
+                data: {  _token :token},
+                dataType: "json",
                 success: function (data) {
-
+                    if(data=='true'){
+                        zeroModal.success('设置成功');
+                        window.location.reload();//刷新当前页面
+                    }else{
+                        zeroModal.error('系统错误，请稍后再试');
+                    }
                 }
 
             });
@@ -129,7 +135,7 @@
                 <div class="col-md-3">
                     <div class="corner info green">
                         <img src="/graphics/health/height.svg">
-                        <h2>{{$todayInfo->height}}<small>cm</small></h2>
+                        <h2>{{$todayInfo->height}}</h2>
                         <h3>身高</h3>
                     </div>
                 </div>
@@ -181,7 +187,7 @@
                             <div class="col-lg-1">
                                 <input type="text" class="form-control" id="inputSuccess">
                             </div>
-                            <div class="col-md-1"><button  class="btn btn-theme" onclick="updateBodyInfo()">保存</button></div>
+                            <div class="col-md-1"><button  class="btn btn-theme"  onclick="updateBodyInfo()">保存</button></div>
 
                         </div>
                     </div>
@@ -222,7 +228,7 @@
                                                 {{$info->rate}}<small>%</small></h2>
                                         </div>
                                         <div class="col-md-offset-1 col-md-2">
-                                            <h4>离目标体重差</h4>
+                                            <h4>离目标体重</h4>
                                             <h2>{{$info->gap}}<small>kg</small></h2>
                                         </div>
                                     </div>

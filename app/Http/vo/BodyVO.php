@@ -20,6 +20,21 @@ class BodyVO{
 
 	public $goal;
 
-	public $bmi;
+
+
+    /**
+     * BodyVO constructor.
+     * @param $userName
+     * @param $weight
+     * @param $height
+     * @param $goal
+     */
+    public function __construct($userName=null, $weight=0, $height=0, $goal=0){
+        $this->userName = $userName;
+        $this->weight = $weight;
+        $this->height = $height;
+        $this->goal = $goal;
+    }
+
 
 }

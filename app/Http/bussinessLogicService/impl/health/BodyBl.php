@@ -14,6 +14,7 @@ use App\Http\dataService\health\BodyDataService;
 use App\Http\tool\DateTool;
 use App\Http\vo\BodyStatisticVO;
 use App\Http\vo\BodyVO;
+use App\Http\vo\TodayBodyVO;
 
 class BodyBl implements BodyBlService {
 
@@ -34,7 +35,7 @@ class BodyBl implements BodyBlService {
 		//不存在当天数据,查找最近数据,history已经按日期排好序
 			$info=$historyData=$this->getHistoryData($userName)[0];
 
-		$result=new BodyVO();
+		$result=new TodayBodyVO();
 		$result->weight=$info->weight;
 		$result->height=$info->height;
 		$result->goal=$info->goal;
@@ -150,11 +151,12 @@ class BodyBl implements BodyBlService {
 		$bodyVO->date=DateTool::today();
 		$bodyInfo=$this->data->getBodyData($bodyVO->userName,$bodyVO->date);
 
-		$existInfo=$bodyInfo.count()>0;
+		$existInfo=$bodyInfo->count()>0;
 		if($existInfo)
 			$this->data->updateBodyData($bodyVO);
 		else
 			$this->data->addBodyData($bodyVO);
+        return 'true';
 	}
 
 }

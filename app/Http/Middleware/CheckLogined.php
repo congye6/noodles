@@ -14,6 +14,8 @@ class CheckLogined{
 
 	public function handle(Request $request, Closure $next){
 
+	    if(empty($_COOKIE['userName']))
+            return redirect('/loginPage');
 		$userName=$_COOKIE['userName'];
 
 		$isLogined=$userName!=null&&$userName!='';

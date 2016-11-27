@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Health;
 
 use App\Http\bussinessLogicService\health\BodyBlService;
 use App\Http\Controllers\Controller;
+use App\Http\vo\BodyVO;
 
 class BodyController extends Controller {
 	private $bl;
@@ -29,5 +30,9 @@ class BodyController extends Controller {
 	public function lineChartData(){
 		return $this->bl->getBodyLineChartData($_COOKIE['userName']);
 	}
+
+	public function setBodyInfo($weight,$height,$goal){
+        return $this->bl->setBodyInfo(new BodyVO($_COOKIE['userName'],$weight,$height,$goal));
+    }
 
 }
