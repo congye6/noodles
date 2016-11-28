@@ -44,7 +44,7 @@ class SleepBl implements SleepBlService {
 	 * @return mixed
 	 */
 	public function sleepStatistic($userName){
-
+		return $this->getHistoryData($userName);
 	}
 
 	/**
@@ -54,7 +54,37 @@ class SleepBl implements SleepBlService {
 	 * @return mixed
 	 */
 	public function sleepHistory($userName){
+		$historyData=$this->getHistoryData($userName);
 
+		$result=array();
+
+		foreach ($historyData as $sleepInfo){
+			$rate=intval($sleepInfo->deepSleep*100/$sleepInfo->sleep);
+			$vo=new SleepViewVO($sleepInfo->sleep,$sleepInfo->deepSleep,$sleepInfo->lightSleep,$sleepInfo->bedTime,$rate,$sleepInfo->date);
+			array_push($result,$vo);
+		}
+
+		return $result;
+	}
+
+
+	/**
+	 * 获取历史数据
+	 * 最多十条
+	 * @param $userName
+	 * @return array
+	 */
+	private function getHistoryData($userName){
+		$historyData=$this->data->getSleepHistory($userName);
+
+		//最多返回十个数据
+		$result=array();
+		foreach ($historyData as $sleepVO){
+			array_push($result,$sleepVO);
+			if(count($result)>=10)
+				break;
+		}
+		return $result;
 	}
 
 	private function createData($userName){

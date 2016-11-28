@@ -23,7 +23,8 @@ function bar(htmlId,title,series) {
             },
             gridLineWidth :0//在图上没有纵轴间隔线
         },
-
+        colors: ['#058DC7', '#FF9655', '#ED561B', '#DDDF00',
+            '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
         plotOptions: {
             column: {
                 pointPadding: 0.2,

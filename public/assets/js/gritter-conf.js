@@ -6,7 +6,7 @@ var Gritter = function () {
             // (string | mandatory) the heading of the notification
             title: 'This is a Sticky Notice!',
             // (string | mandatory) the text inside the notification
-            text: 'Hover me to enable the Close Button. This note also contains a link example. Thank you so much to try Dashgum. Developed by <a href="#" style="color:#FFD777">Alvarez.is</a>.',
+            text: "",
             // (string | optional) the image to display on the left
             image: 'assets/img/ui-sam.jpg',
             // (bool | optional) if you want it to fade out on its own or just sit there

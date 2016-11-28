@@ -19,7 +19,11 @@ class SleepViewVO{
 
     public $bedTime;
 
-    public function __construct($sleep=0,$deepSleep=0,$lightSleep=0,$bedTime){
+	public $deepSleepRate;
+
+	public $date;
+
+    public function __construct($sleep=0,$deepSleep=0,$lightSleep=0,$bedTime,$deepSleepRate=0,$date=null){
         $this->sleepHour=intval($sleep/60);
         $this->sleepMinute=$sleep%60;
 
@@ -30,5 +34,8 @@ class SleepViewVO{
         $this->lightSleepMinute=$lightSleep%60;
 
         $this->bedTime=$bedTime;
+
+	    $this->deepSleepRate=$deepSleepRate;
+	    $this->date=$date;
     }
 }

@@ -22,10 +22,15 @@ class SleepController extends Controller {
 
     public function getSleepInfo(){
         $todayInfo=$this->bl->todaySleepInfo($_COOKIE['userName']);
-		return view('health.sleep')->with('todayInfo',$todayInfo);
+	    $history=$this->bl->sleepHistory($_COOKIE['userName']);
+		return view('health.sleep')->with(['todayInfo'=>$todayInfo,'history'=>$history]);
 	}
 
 	public function deepSleepRate(){
 	    return $this->bl->deepOrLightSleep($_COOKIE['userName']);
+    }
+
+    public function lineChartData(){
+    	return $this->bl->sleepStatistic($_COOKIE['userName']);
     }
 }

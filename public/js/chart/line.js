@@ -2,6 +2,7 @@
  * Created by st0001 on 2016-11-16.
  */
 function lineChart(htmlId,title,series) {
+
     var chart=new Highcharts.Chart({
 
         title: {
@@ -25,6 +26,8 @@ function lineChart(htmlId,title,series) {
                 month: '%b %e'
             }
         },
+        colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00',
+            '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
         plotOptions: {
             spline:{
                 marker:{

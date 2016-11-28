@@ -140,10 +140,9 @@ class BodyBl implements BodyBlService {
 	}
 
 	private function copyBodyInfo($info){
-		$result=new BodyVO();
+		$result=new BodyVO(null,$info->weight,0,$info->goal);
 		$result->date=$info->date;
-		$result->goal=$info->goal;
-		$result->weight=$info->weight;
+
 		return $result;
 	}
 

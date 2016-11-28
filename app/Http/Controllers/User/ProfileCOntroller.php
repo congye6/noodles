@@ -16,4 +16,8 @@ class ProfileController extends Controller {
 		return view('user.profile');
 	}
 
+	public function myProfile(){
+		return $this->profile($_COOKIE['userName']);
+	}
+
 }

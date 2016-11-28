@@ -18,4 +18,6 @@ interface StepBlService{
 	 */
 	public function getStepsByDay($userName,$date);
 
+	public function setStepGoal($userName,$goal);
+
 }

@@ -115,6 +115,10 @@ class AppServiceProvider extends ServiceProvider{
 		    'App\Http\dataService\health\SleepDataService',
 		    'App\Http\dataService\impl\health\SleepData'
 	    );
+	    $this->app->bind(
+		    'App\Http\dataService\health\StepGoalDataService',
+		    'App\Http\dataService\impl\health\StepGoalData'
+	    );
 
 
     }

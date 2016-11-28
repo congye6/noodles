@@ -21,6 +21,7 @@ class BodyController extends Controller {
 	}
 
 	public function getBodyInfo(){
+
 		$history=$this->bl->getBodyHistory($_COOKIE['userName']);
 		$todayInfo=$this->bl->getBodyInfo($_COOKIE['userName']);
 
@@ -28,7 +29,8 @@ class BodyController extends Controller {
 	}
 
 	public function lineChartData(){
-		return $this->bl->getBodyLineChartData($_COOKIE['userName']);
+		$result=$this->bl->getBodyLineChartData($_COOKIE['userName']);
+		return $result;
 	}
 
 	public function setBodyInfo($weight,$height,$goal){

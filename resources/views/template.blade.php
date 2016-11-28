@@ -196,9 +196,9 @@
               	  <h5 class="centered" id="userName"></h5>
               	  	
                   <li class="mt">
-                      <a href="/">
+                      <a href="/myProfile">
                           <i class="fa  fa-hand-o-up"></i>
-                          <span>首页</span>
+                          <span>个人主页</span>
                       </a>
                   </li>
 
@@ -236,16 +236,16 @@
                           <li><a  href="/comments">消息盒子</a></li>
                       </ul>
                   </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-tasks"></i>
-                          <span>目标</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="/todo">今日目标</a></li>
-                          <li><a  href="/historyGoal">历史目标</a></li>
-                      </ul>
-                  </li>
+                  {{--<li class="sub-menu">--}}
+                      {{--<a href="javascript:;" >--}}
+                          {{--<i class="fa fa-tasks"></i>--}}
+                          {{--<span>目标</span>--}}
+                      {{--</a>--}}
+                      {{--<ul class="sub">--}}
+                          {{--<li><a  href="/todo">今日目标</a></li>--}}
+                          {{--<li><a  href="/historyGoal">历史目标</a></li>--}}
+                      {{--</ul>--}}
+                  {{--</li>--}}
                  
 
               </ul>

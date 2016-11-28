@@ -117,6 +117,28 @@
                 });
             }
 
+            function setGoal(){
+                var goal=$('#goal').val();
+
+                var url=getUrl(['walkGoal',goal]);
+
+
+                $.ajax({
+                    type: "post",
+                    url: url,
+                    data: '',
+                    success: function (data) {
+                        if(data=='true'){
+                            zeroModal.alert('更改成功');
+                            window.location.reload();//刷新当前页面
+                        }else{
+                            zeroModal.error('系统错误，请稍后再试');
+                        }
+                    }
+
+                });
+            }
+
 
 
         </script>
@@ -126,32 +148,16 @@
         <section class="wrapper site-min-height">
             <!--set goal-->
             <div class="row mt">
-                <!--select day-->
-                <div class="col-md-2">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-theme03">今天</button>
-                        <button type="button" class="btn btn-theme03 dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 col-md-offset-5">
+
+                <div class="col-md-4 col-md-offset-7">
                     <div class="form-group">
                         <label class="sr-only" for="exampleInputPassword2">Password</label>
-                        <input type="text" class="form-control" id="exampleInputPassword2" placeholder="30000步">
+                        <input type="text" class="form-control" id="goal" placeholder="每日目标">
                     </div>
 
                 </div>
                 <div class="col-md-1">
-                    <button type="submit" class="btn btn-theme">更改</button>
+                    <button class="btn btn-theme" onclick="setGoal()">更改</button>
                 </div>
             </div>
 

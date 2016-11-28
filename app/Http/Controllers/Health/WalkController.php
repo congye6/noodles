@@ -45,6 +45,10 @@ class WalkController extends Controller {
 		return $this->stepBl->getHistorySteps($_COOKIE['userName']);
 	}
 
+	public function setWalkGoal($goal){
+		return $this->stepBl->setStepGoal($_COOKIE['userName'],$goal);
+	}
+
 
 
 }

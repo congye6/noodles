@@ -36,17 +36,15 @@
             //获取数据
             $.ajax({
                 type: "get",
-                url: 'lineChartData',
+                url: 'bodyLineChartData',
                 data: '',
                 success: function (data) {
-
                     var series=[];
                     var weights=[];
                     var goals=[];
 
                     $.each(data,function(i,vo){
                         var day=dateToUtc(vo.date);
-
                         weights.push([day,parseFloat(vo.weight)]);
                         goals.push([day,parseFloat(vo.goal)]);
 

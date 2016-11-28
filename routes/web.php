@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('user/welcome');
-})->middleware('login');
+Route::get('/','Health\WalkController@getWalkInfo')->middleware('login');
 
 /**
  * health
@@ -23,11 +21,14 @@ Route::get('getStepInMinute/{date}','Health\WalkController@getStepInMinute')->mi
 Route::get('getStepRate/{date}','Health\WalkController@getStepRate')->middleware('login');
 Route::get('stepHistory','Health\WalkController@stepHistory')->middleware('login');
 Route::get('getWalkInfo','Health\WalkController@getWalkInfo')->middleware('login');
+Route::any('walkGoal/{goal}','Health\WalkController@setWalkGoal')->middleware('login');
+
 Route::get('getBodyInfo','Health\BodyController@getBodyInfo')->middleware('login');
 Route::any('bodyInfo/{weight}/{height}/{goal}','Health\BodyController@setBodyInfo')->middleware('login');
-Route::get('lineChartData','Health\BodyController@lineChartData')->middleware('login');
+Route::get('bodyLineChartData','Health\BodyController@lineChartData')->middleware('login');
 Route::get('getSleepInfo','Health\SleepController@getSleepInfo')->middleware('login');
 Route::get('deepSleepRate','Health\SleepController@deepSleepRate')->middleware('login');
+Route::get('lineChartData','Health\SleepController@lineChartData')->middleware('login');
 /**
  * activity
  */
@@ -58,6 +59,7 @@ Route::any('todo','Goal\TodoController@todo')->middleware('login');
  * user
  */
 Route::get('profile/{userName}','User\ProfileController@profile')->middleware('login');
+Route::get('/myProfile','User\ProfileController@myProfile')->middleware('login');
 Route::get('loginPage','User\loginController@loginPage');
 Route::get('login/{userName}/{password}','User\LoginController@login');
 Route::get('register/{userName}/{password}','User\LoginController@register');
