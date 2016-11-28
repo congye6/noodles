@@ -24,4 +24,23 @@ class SleepVO{
 	//入睡时间，23:45
 	public $bedTime;
 
+    /**
+     * SleepVO constructor.
+     * @param $userName
+     * @param $date
+     * @param $sleep
+     * @param $deepSleep
+     * @param $lightSleep
+     * @param $bedTime
+     */
+    public function __construct($userName, $date, $sleep, $deepSleep, $lightSleep, $bedTime){
+        $this->userName = $userName;
+        $this->date = $date;
+        $this->sleep = $sleep;
+        $this->deepSleep = $deepSleep;
+        $this->lightSleep = $lightSleep;
+        $this->bedTime = $bedTime;
+    }
+
+
 }

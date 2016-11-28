@@ -20,8 +20,27 @@
 
     @section('js')
         @@parent
+        <script src="/js/Highcharts-4.2.5/js/highcharts.js"></script>
+        <script src="/js/chart/pie.js"></script>
 
+        <script>
+            $(function () {
+                deepSleepRate();
+            });
 
+            function deepSleepRate(){
+                //获取数据
+                $.ajax({
+                    type: "get",
+                    url: 'deepSleepRate',
+                    data: '',
+                    success: function (data) {
+                        var sleep=[parseInt(data.deepSleep),parseInt(data.lightSleep)];
+                        pieChart('睡眠程度比例','rate',['深度睡眠','浅睡眠'],sleep);
+                    }
+                });
+            }
+        </script>
     @endsection
 
 
@@ -32,7 +51,7 @@
                 <div class="col-md-3">
                     <div class="corner info pink">
                         <img src="/graphics/health/sleep.svg">
-                        <h2>8<small>h</small>12<small>m</small></h2>
+                        <h2>{{$todayInfo->sleepHour}}<small>h</small>{{$todayInfo->sleepMinute}}<small>m</small></h2>
                         <h3>全天睡眠</h3>
                     </div>
                 </div>
@@ -40,7 +59,7 @@
                 <div class="col-md-3">
                     <div class="corner info blue">
                         <img src="/graphics/health/deadSleep.svg">
-                        <h2>2<small>h</small>12<small>m</small></h2>
+                        <h2>{{$todayInfo->deepSleepHour}}<small>h</small>{{$todayInfo->deepSleepMinute}}<small>m</small></h2>
                         <h3>深睡</h3>
                     </div>
                 </div>
@@ -48,7 +67,7 @@
                 <div class="col-md-3">
                     <div class="corner info green">
                         <img src="/graphics/health/lightSleep.svg">
-                        <h2>5<small>h</small>12<small>m</small></h2>
+                        <h2>{{$todayInfo->lightSleepHour}}<small>h</small>{{$todayInfo->lightSleepMinute}}<small>m</small></h2>
                         <h3>浅睡</h3>
                     </div>
                 </div>
@@ -56,7 +75,7 @@
                 <div class="col-md-3">
                     <div class="corner info gray">
                         <img src="/graphics/health/goToBed.svg">
-                        <h2>23:45</h2>
+                        <h2>{{$todayInfo->bedTime}}</h2>
                         <h3>昨晚入睡</h3>
                     </div>
                 </div>
@@ -66,10 +85,10 @@
 
 
             <div class="row mt">
-                <!--睡眠-->
+                <!--睡眠程度比例-->
                 <div class="col-lg-3">
                     <div class="corner" style="background-color: white">
-                        <div id="history" class="chart">
+                        <div id="rate" class="chart">
                         </div>
                     </div>
                 </div>

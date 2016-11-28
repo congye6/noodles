@@ -9,10 +9,23 @@
 namespace App\Http\Controllers\Health;
 
 
+use App\Http\bussinessLogicService\health\SleepBlService;
 use App\Http\Controllers\Controller;
 
 class SleepController extends Controller {
-	public function getSleepInfo(){
-		return view('health.sleep');
+
+    private $bl;
+
+    public function __construct(SleepBlService $bl){
+        $this->bl=$bl;
+    }
+
+    public function getSleepInfo(){
+        $todayInfo=$this->bl->todaySleepInfo($_COOKIE['userName']);
+		return view('health.sleep')->with('todayInfo',$todayInfo);
 	}
+
+	public function deepSleepRate(){
+	    return $this->bl->deepOrLightSleep($_COOKIE['userName']);
+    }
 }

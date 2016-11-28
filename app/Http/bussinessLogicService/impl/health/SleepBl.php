@@ -10,11 +10,23 @@ namespace App\Http\bussinessLogicService\impl\health;
 
 
 use App\Http\bussinessLogicService\health\SleepBlService;
+use App\Http\dataService\health\SleepDataService;
+use App\Http\tool\DateTool;
+use App\Http\vo\SleepViewVO;
+use App\Http\vo\SleepVO;
 
 class SleepBl implements SleepBlService {
 
-	public function todaySleepInfo($userName){
+    private $data;
 
+    public function __construct(SleepDataService $data){
+        $this->data=$data;
+    }
+
+    public function todaySleepInfo($userName){
+        $data=$this->data->getSleepData($userName,DateTool::today());
+        $sleepViewVO=new SleepViewVO($data->sleep,$data->deepSleep,$data->lightSleep,$data->bedTime);
+        return $sleepViewVO;
 	}
 
 	/**
@@ -23,7 +35,7 @@ class SleepBl implements SleepBlService {
 	 * @return mixed
 	 */
 	public function deepOrLightSleep($userName){
-
+        return $this->data->getSleepData($userName,DateTool::today());
 	}
 
 	/**
@@ -44,4 +56,10 @@ class SleepBl implements SleepBlService {
 	public function sleepHistory($userName){
 
 	}
+
+	private function createData($userName){
+        for($i=0;$i<10;$i++){
+            $this->data->addSleepData(new SleepVO($userName,date('Y-m-d',time()+8*3600-240*3600+$i*24*3600),480+$i,120+$i,360,'22:45'));
+        }
+    }
 }

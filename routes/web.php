@@ -27,7 +27,7 @@ Route::get('getBodyInfo','Health\BodyController@getBodyInfo')->middleware('login
 Route::any('bodyInfo/{weight}/{height}/{goal}','Health\BodyController@setBodyInfo')->middleware('login');
 Route::get('lineChartData','Health\BodyController@lineChartData')->middleware('login');
 Route::get('getSleepInfo','Health\SleepController@getSleepInfo')->middleware('login');
-
+Route::get('deepSleepRate','Health\SleepController@deepSleepRate')->middleware('login');
 /**
  * activity
  */
