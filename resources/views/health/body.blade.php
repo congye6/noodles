@@ -16,6 +16,7 @@
     @@parent
     <link rel="stylesheet" href="/css/health/box.css">
     <link rel="stylesheet" href="/css/health/body.css">
+    <link rel="stylesheet" href="/css/health/history.css">
 @endsection
 
 @section('js')
@@ -71,8 +72,6 @@
             var weight=$('.col-lg-1 #inputSuccess').eq(1).val();
             var goal=$('.col-lg-1 #inputSuccess').eq(2).val();
 
-            var token='{{csrf_token()}}';
-
             if(height==''||weight==''||goal==''){
                 zeroModal.error('请输入全部数据');
                 return;
@@ -92,8 +91,7 @@
             $.ajax({
                 type: "post",
                 url: url,
-                data: {  _token :token},
-                dataType: "json",
+                data: '',
                 success: function (data) {
                     if(data=='true'){
                         zeroModal.success('设置成功');
@@ -198,9 +196,9 @@
 
 
             @foreach($history as $info)
-                <div class="row mt">
+                <div class="row">
                     <div class="col-md-12">
-                        <div class="row mt">
+                        <div class="row">
                             <div class="col-md-offset-2 col-md-12">
                                 <p>{{$info->time}}记录</p>
                             </div>

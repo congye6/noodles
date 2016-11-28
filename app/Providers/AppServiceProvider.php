@@ -63,6 +63,10 @@ class AppServiceProvider extends ServiceProvider{
 		    'App\Http\bussinessLogicService\health\BodyBlService',
 		    'App\Http\bussinessLogicService\impl\health\BodyBl'
 	    );
+	    $this->app->bind(
+		    'App\Http\bussinessLogicService\health\SleepBlService',
+		    'App\Http\bussinessLogicService\impl\health\SleepBl'
+	    );
 
 	    /**
 	     * data
@@ -105,6 +109,11 @@ class AppServiceProvider extends ServiceProvider{
 	    $this->app->bind(
 		    'App\Http\dataService\health\BodyDataService',
 		    'App\Http\dataService\impl\health\BodyData'
+	    );
+
+	    $this->app->bind(
+		    'App\Http\dataService\health\SleepDataService',
+		    'App\Http\dataService\impl\health\SleepData'
 	    );
 
 
