@@ -11,6 +11,8 @@ namespace App\Http\bussinessLogicService\health;
 
 interface StepDetailBlService{
 
+    public function completeRate($userName);
+
 	public function getTodayStepsInMinute($userName,$date);
 
 	public function getTodayStepsInTotal($userName);

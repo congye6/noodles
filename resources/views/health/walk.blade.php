@@ -196,7 +196,7 @@
                             <div class="col-md-3">
                                 <div class="corner info gray">
                                     <img src="/graphics/health/time.svg">
-                                    <h2>{{$stepTotal->hour}}<small>h</small>{{$stepTotal->minute}}<small>min</small></h2>
+                                    <h2>{{$stepTotal->hour}}<small>h</small>{{$stepTotal->minute}}<small>m</small></h2>
                                     <h3>运动时长</h3>
                                 </div>
                             </div>
@@ -222,8 +222,8 @@
                             <!--完成目标百分比-->
                             <div class="col-lg-4">
                                 <div class="corner" style="background-color: white">
-                                    <div id="complete"  data-dimension="250" data-text="35%" data-info="New Clients"
-                                         data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#61a9dc" data-bgcolor="#eee">
+                                    <div id="complete"  data-dimension="250" data-text="{{$rate}}%" data-info="完成目标"
+                                         data-width="30" data-fontsize="38" data-percent="{{$rate}}" data-fgcolor="#61a9dc" data-bgcolor="#eee">
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +262,7 @@
                     <div class="col-md-9 col-md-offset-1 detail">
                         <h3>{{$step->time}}步行</h3>
                         <h1><b>{{$step->step}}</b><small>步</small>&nbsp;&nbsp;&nbsp;&nbsp;<b>{{$step->walkTime}}</b><small>分钟</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{$step->distance}}</b>
-                            <small>km</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{$step->heat}}</b><small>cal</small></h1>
+                            <small>米</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{$step->heat}}</b><small>卡</small></h1>
                     </div>
 
                 </div>

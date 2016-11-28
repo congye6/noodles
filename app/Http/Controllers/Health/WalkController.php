@@ -30,7 +30,9 @@ class WalkController extends Controller {
 		$stepTotalVO=$this->stepBl->getStepsByDay($_COOKIE["userName"],DateTool::today());
 
 		$mainStep=$this->stepDetailBl->getTodayMainSteps($_COOKIE["userName"],DateTool::today());
-		return view('health.walk')->with(['stepTotal'=>$stepTotalVO,'mainStep'=>$mainStep]);
+
+        $completeRate=$this->stepDetailBl->completeRate($_COOKIE['userName']);
+		return view('health.walk')->with(['stepTotal'=>$stepTotalVO,'mainStep'=>$mainStep,'rate'=>$completeRate]);
 	}
 
 	public function getStepInMinute($date){

@@ -21,6 +21,10 @@ class StepGoalData extends Model implements StepGoalDataService {
 		StepGoalData::create(['userName'=>$userName,'goal'=>$goal]);
 	}
 
+    public function getStepGoal($userName){
+        return StepGoalData::where('userName',$userName)->first()->goal;
+    }
+
 	public function updateStepGoal($userName,$goal){
 		$data=StepGoalData::where('userName',$userName)->get();
 		if($data->count()>0)

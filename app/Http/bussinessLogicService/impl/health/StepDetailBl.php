@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\bussinessLogicService\impl\health;
 use App\Http\bussinessLogicService\health\StepDetailBlService;
+use App\Http\dataService\health\StepDataService;
 use App\Http\dataService\health\StepDetailDataService;
+use App\Http\dataService\health\StepGoalDataService;
 use App\Http\tool\DateTool;
 use App\Http\vo\StepTotalVO;
 use App\Http\vo\StepVO;
@@ -15,10 +17,22 @@ use App\Http\vo\StepVO;
 class StepDetailBl implements StepDetailBlService {
 	private $data;
 
+    private $goalData;
 
-	public function __construct(StepDetailDataService $dataService){
+	public function __construct(StepDetailDataService $dataService,StepGoalDataService $goalData){
 		$this->data=$dataService;
+        $this->goalData=$goalData;
 	}
+
+	public function completeRate($userName){
+        $step=$this->getTodayStepsInTotal($userName)->step;
+        $goal=$this->goalData->getStepGoal($userName);
+
+        if($step>=$goal)
+            return 100;
+        else
+            return 100*$step/$goal;
+    }
 
 	public function getTodayStepsInMinute($userName,$date){
 //		$this->createData($userName);
@@ -34,6 +48,7 @@ class StepDetailBl implements StepDetailBlService {
 		foreach ($stepList as $step){
 			$stepTotal->add($step);
 		}
+		$stepTotal->distance=round($stepTotal->distance/1000,1);
 		return $stepTotal;
 	}
 
@@ -77,7 +92,7 @@ class StepDetailBl implements StepDetailBlService {
 			$hour=mt_rand(0,23);
 			$minute=mt_rand(0,2)*20;
 			$time=$hour.':'.$minute;
-			$this->data->addStepsInMinute(new StepVO($userName,mt_rand(50,2000),DateTool::today(),mt_rand(1,20),mt_rand(500,1000),mt_rand(200,1000),$time));
+			$this->data->addStepsInMinute(new StepVO($userName,mt_rand(50,2000),DateTool::today(),mt_rand(1,20),mt_rand(20,200),mt_rand(200,1000),$time));
 		}
 	}
 }

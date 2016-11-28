@@ -13,4 +13,6 @@ interface StepGoalDataService{
 	public function addStepGoal($userName,$goal);
 
 	public function updateStepGoal($userName,$goal);
+
+    public function getStepGoal($userName);
 }
