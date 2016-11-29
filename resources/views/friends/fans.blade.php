@@ -28,7 +28,7 @@
                             <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
                         </div>
                         <div class="details">
-                            <p><a href="#">{{$friend->userName}}</a><br/>
+                            <p><a href="/profile/{{$friend->userName}}">{{$friend->userName}}</a><br/>
                                 <muted>Available</muted>
                             </p>
                         </div>

@@ -13,11 +13,11 @@ use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller {
 	public function profile($userName){
-		return view('user.profile');
+		return view('user.profile')->with(['userName'=>$userName]);
 	}
 
 	public function myProfile(){
-		return $this->profile($_COOKIE['userName']);
+		return view('user.profile')->with(['userName'=>$_COOKIE['userName']]);
 	}
 
 }

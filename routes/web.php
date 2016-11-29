@@ -43,10 +43,13 @@ Route::any('publish/{description}/{startTime}/{endTime}/{sportType}/{enterFee}',
 /**
  * friends
  */
-Route::any('comments','Friends\CommentsController@comments')->middleware('login');
-Route::any('fans','Friends\FansController@fans')->middleware('login');
+Route::get('messages','Friends\MessageController@messages')->middleware('login');
+Route::any('message/{reciever}/{message}','Friends\MessageController@sendMessage')->middleware('login');
+
+Route::get('fans','Friends\FansController@fans')->middleware('login');
 Route::get('followedFriends','Friends\FollowedController@followedFriends')->middleware('login');
 Route::get('cancelFollowed/{followed}','Friends\FollowedController@cancelFollowed')->middleware('login');
+Route::any('followedFriend/{followed}','Friends\FollowedController@followedFriend')->middleware('login');
 
 /**
  * goal

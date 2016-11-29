@@ -26,14 +26,19 @@ class BodyBl implements BodyBlService {
 
 	public function getBodyInfo($userName){
 		//先取当天的数据，不存在再找最近的数据
-
 		$todayInfo=$this->data->getBodyData($userName,DateTool::today());
 		$hasTodayInfo=$todayInfo->count()>0;
 		if($hasTodayInfo)
 			$info=$todayInfo[0];
-		else
-		//不存在当天数据,查找最近数据,history已经按日期排好序
-			$info=$historyData=$this->getHistoryData($userName)[0];
+		else{
+			//不存在当天数据,查找最近数据,history已经按日期排好序
+			$infos=$historyData=$this->getHistoryData($userName);
+			if(count($infos)==0)
+				return new TodayBodyVO();
+			$info=$infos[0];
+		}
+
+
 
 		$result=new TodayBodyVO();
 		$result->weight=$info->weight;
@@ -47,6 +52,9 @@ class BodyBl implements BodyBlService {
 
 	public function getBodyHistory($userName){
 		$historyData=$this->getHistoryData($userName);
+		if(count($historyData)==0)
+			return [];
+
 		$statisticList=array();
 		$lastInfo=$historyData[0];//用于进行比较变化率
 		foreach ($historyData as $info){

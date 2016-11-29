@@ -28,4 +28,8 @@ class FollowedController extends Controller {
     public function cancelFollowed($followed){
     	return $this->bl->deleteFollowedFriend(new FollowedVO($_COOKIE['userName'],$followed));
     }
+
+    public function followedFriend($followed){
+		return $this->bl->addFollowedFriend(new FollowedVO($_COOKIE['userName'],$followed));
+    }
 }

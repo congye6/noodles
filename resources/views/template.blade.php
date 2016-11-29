@@ -233,7 +233,7 @@
                       <ul class="sub">
                           <li><a  href="/followedFriends">我关注的</a></li>
                           <li><a  href="/fans">粉丝</a></li>
-                          <li><a  href="/comments">消息盒子</a></li>
+                          <li><a  href="/messages">消息盒子</a></li>
                       </ul>
                   </li>
                   {{--<li class="sub-menu">--}}

@@ -22,7 +22,11 @@ class StepGoalData extends Model implements StepGoalDataService {
 	}
 
     public function getStepGoal($userName){
-        return StepGoalData::where('userName',$userName)->first()->goal;
+        $data=StepGoalData::where('userName',$userName)->first();
+	    if($data==[])
+	    	return 3000;
+	    else
+	    	return $data->goal;
     }
 
 	public function updateStepGoal($userName,$goal){

@@ -25,6 +25,8 @@ class SleepBl implements SleepBlService {
 
     public function todaySleepInfo($userName){
         $data=$this->data->getSleepData($userName,DateTool::today());
+	    if($data==[])
+	    	return new SleepViewVO(0,0,0,'00:00');
         $sleepViewVO=new SleepViewVO($data->sleep,$data->deepSleep,$data->lightSleep,$data->bedTime);
         return $sleepViewVO;
 	}

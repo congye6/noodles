@@ -6,7 +6,7 @@
       ***********************************************************************************************************************************************************-->
     {{--main content start--}}
         @section('title')
-            首页
+            {{$userName}}的个人主页
         @endsection
 
         @section('select-page')
@@ -19,18 +19,62 @@
 
         @section('css')
             @@parent
-            <script src="assets/js/chart-master/Chart.js"></script>
+            <script src="/assets/js/chart-master/Chart.js"></script>
             <link rel="stylesheet" type="text/css" href="/assets/lineicons/style.css">
-            <link rel="stylesheet" href="css/user/profile.css">
+            <link rel="stylesheet" href="/css/user/profile.css">
 
         @endsection
 
         @section('js')
             @@parent
 
+            <script>
+                function sendMessage() {
+                    var message=$('input').val();
+                    if(message==''){
+                        zeroModal.error('请输入您的消息');
+                        return;
+                    }
 
+                    var url=getUrl(['message','{{$userName}}',message]);
 
+                    $.ajax({
+                        type: "post",
+                        url: url,
+                        data: '',
+                        success: function (data) {
+                            if(data=='true'){
+                                zeroModal.success('发送成功');
+                                window.location.reload();//刷新当前页面
+                            }else{
+                                zeroModal.error(data);
+                            }
+                        }
 
+                    });
+                }
+
+                function follow(){
+
+                    var url=getUrl(['followedFriend','{{$userName}}']);
+
+                    $.ajax({
+                        type: "post",
+                        url: url,
+                        data: '',
+                        success: function (data) {
+                            if(data=='true'){
+                                zeroModal.success('关注成功');
+                                window.location.reload();//刷新当前页面
+                            }else{
+                                zeroModal.error(data);
+                            }
+                        }
+
+                    });
+                }
+
+            </script>
 
         @endsection
 
@@ -42,20 +86,44 @@
                 <div class="col-lg-12">
                     <div class="tile-light p-5 m-b-15 showback">
                         <div class="cover p-relative">
-                            <img src="assets/img/cover-bg.jpg" class="w-100" alt="">
-                            <img class="profile-pic" src="assets/img/profile-pic.jpg" alt="">
-                            <div class="profile-btn">
-                                <button class="btn btn-alt btn-sm"><i class="icon-bubble"></i> <span>Message</span></button>
-                                <button class="btn btn-alt btn-sm"><i class="icon-user-2"></i> <span>Friend</span></button>
-                            </div>
+                            <img src="/assets/img/cover-bg.jpg" class="w-100" alt="">
+                            <img class="profile-pic" src="/assets/img/profile-pic.jpg" alt="">
+                            @if($userName!=$_COOKIE['userName'])
+                                <div class="profile-btn">
+                                    <button class="btn btn-alt btn-sm" data-toggle="modal" href="#myModal"><i class="icon-bubble"></i> <span>Message</span></button>
+                                    <button class="btn btn-alt btn-sm" onclick="follow()"><i class="icon-user-2" ></i> <span>Follow</span></button>
+                                </div>
+                            @endif
                         </div>
                         <div class="p-5 m-t-15">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget risus rhoncus, cursus purus vitae, venenatis eros. Phasellus at tincidunt risus. Integer sed massa fermentum, feugiat arcu quis, ultrices nisi. Quisque commodo nisi scelerisque, tempus diam ac, dignissim tellus. Mauris adipiscing elit tortor, dignissim auctor diam mollis sed. Nulla eu dui non velit accumsan scelerisque eget et felis.
+                           不用写个性签名了，谢谢
                         </div>
                     </div>
 
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">发送消息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>请输入您的消息</p>
+                            <input type="text" name="email" placeholder="Hello World" autocomplete="off" class="form-control placeholder-no-fix">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-theme" type="button" onclick="sendMessage()">发送</button>
+                            <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal -->
 
             <div class="row">
                 <div class="col-lg-12 main-chart">

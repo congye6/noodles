@@ -49,6 +49,7 @@ class StepDetailBl implements StepDetailBlService {
 			$stepTotal->add($step);
 		}
 		$stepTotal->distance=round($stepTotal->distance/1000,1);
+		$stepTotal->heat=round($stepTotal->heat/1000,1);
 		return $stepTotal;
 	}
 

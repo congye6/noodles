@@ -188,7 +188,7 @@
                             <div class="col-md-3">
                                 <div class="corner info green">
                                     <img src="/graphics/health/hot.svg">
-                                    <h2>{{$stepTotal->heat}}<small>cal</small></h2>
+                                    <h2>{{$stepTotal->heat}}<small>kcal</small></h2>
                                     <h3>消耗热量</h3>
                                 </div>
                             </div>

@@ -57,7 +57,7 @@
                                     <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
                                 </div>
                                 <div class="details">
-                                    <p><a href="#">{{$friend->followed}}</a><br/>
+                                    <p><a href="/profile/{{$friend->followed}}">{{$friend->followed}}</a><br/>
                                         <muted>Available</muted>
                                     </p>
                                 </div>

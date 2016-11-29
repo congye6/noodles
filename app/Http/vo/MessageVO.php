@@ -10,14 +10,25 @@ namespace App\Http\vo;
 
 
 class MessageVO{
-	public $senderId;
+	public $sender;
 
 
 	//接收者id
-	public $recieverId;
+	public $reciever;
 
-	public $content;
+	public $message;
 
-	public $date;
+	/**
+	 * MessageVO constructor.
+	 * @param $sender
+	 * @param $reciever
+	 * @param $message
+	 */
+	public function __construct($sender, $reciever, $message){
+		$this->sender = $sender;
+		$this->reciever = $reciever;
+		$this->message = $message;
+	}
+
 
 }

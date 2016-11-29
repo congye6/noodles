@@ -67,6 +67,10 @@ class AppServiceProvider extends ServiceProvider{
 		    'App\Http\bussinessLogicService\health\SleepBlService',
 		    'App\Http\bussinessLogicService\impl\health\SleepBl'
 	    );
+	    $this->app->bind(
+		    'App\Http\bussinessLogicService\user\UserBlService',
+		    'App\Http\bussinessLogicService\impl\user\UserBl'
+	    );
 
 	    /**
 	     * data
