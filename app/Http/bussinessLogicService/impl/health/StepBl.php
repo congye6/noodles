@@ -37,7 +37,33 @@ class StepBl implements StepBlService {
 		$today=DateTool::today();
 		$AWeekAgo=date('Y-m-d',time()+8*3600-7*24*3600);
 
-		return $this->stepData->getStepsInDay($today,$AWeekAgo,$userName);
+		$datas=$this->stepData->getStepsInDay($AWeekAgo,$today,$userName);
+
+		$dates=array();
+		foreach ($datas as $data){
+			array_push($dates,$data->date);
+		}
+
+		array_multisort($dates,SORT_DESC,$datas,SORT_DESC);
+
+
+		return $datas;
+	}
+
+	/**
+	 * 获得user在某个时间段的总步数
+	 * @param $userName
+	 * @param $startDate
+	 * @param $endDate
+	 * @return int
+	 */
+	public function getStepTotal($userName,$startDate,$endDate){
+		$stepInfos=$this->stepData->getStepsInDay($startDate,$endDate,$userName);
+		$stepTotal=0;
+		foreach ($stepInfos as $info){
+			$stepTotal=$info->step+$stepTotal;
+		}
+		return $stepTotal;
 	}
 
 	/**
@@ -50,6 +76,19 @@ class StepBl implements StepBlService {
 		if($date==DateTool::today())
 			return $this->detailBl->getTodayStepsInTotal($userName);
 		return $this->stepData->getSteps($date,$userName);
+	}
+
+	/**
+	 * 获取用户总共消耗的热量(千卡)
+	 */
+	public function getHeatTotal($userName){
+		$stepInfos=$this->stepData->getAllStep($userName);
+		$heatTotal=0;
+		foreach ($stepInfos as $info){
+			$heatTotal=$info->step+$heatTotal;
+		}
+		$heatTotal=round($heatTotal/1000,1);
+		return $heatTotal;
 	}
 
 	public function setStepGoal($userName,$goal){

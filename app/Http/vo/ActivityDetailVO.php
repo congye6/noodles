@@ -11,6 +11,6 @@ namespace App\Http\vo;
 
 class ActivityDetailVO extends ActivityVO {
 
-	public $partnerInfoList;
+	public $partnerList;
 
 }

@@ -22,4 +22,12 @@ interface PartnerBlService{
 	public function getPartner($activityId);
 
 	public function isInActivity($activityId,$userName);
+
+	/**
+	 * 获取参加活动次数
+	 * 不包括自己创建的
+	 * @param $userName
+	 * @return mixed
+	 */
+	public function getJoinCount($userName);
 }

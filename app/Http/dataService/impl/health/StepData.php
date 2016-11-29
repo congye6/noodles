@@ -25,14 +25,20 @@ class StepData extends Model  implements StepDataService {
 		$allStep=StepData::where('userName',$userName)->get();
 		$result=array();
 		foreach ($allStep as $step){
-			if(DateTool::isBetween($step->date,$beginDate,$endDate))
-				array_push($result,$step);
+
+			if(DateTool::isBetween($step->date,$beginDate,$endDate)) {
+				array_push($result, $step);
+			}
 		}
 		return $result;
 	}
 
 	public function addStepsInDay(StepVO $stepVO){
 		StepData::create(ObjectTool::objectToArray($stepVO));
+	}
+
+	public function getAllStep($userName){
+		return StepData::where('userName',$userName)->get();
 	}
 
 	public function getSteps($date,$userName){

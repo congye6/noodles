@@ -38,8 +38,14 @@
 				});
 			}
 
+			function checkProfile(name){
+				window.location.href='/profile/'+name;
+			}
+
 
 		</script>
+
+
 
 	@endsection
 
@@ -110,7 +116,7 @@
 
 							<div class="col-lg-5">
 								<h2><b>{{$activityVO->activity->enterFee*$activityVO->partnerCount}}</b><small>金币</small></h2>
-								<h5>保证金:{{$activityVO->activity->enterFee}}，等差分配</h5>
+								<h5>保证金:{{$activityVO->activity->enterFee}}</h5>
 							</div>
 
 						</div>
@@ -135,26 +141,38 @@
 
 				</div>
 
-				<div class="row mt">
-					<div class="col-md-1 centered">
-						<img class='contentIcon' src="/graphics/activity/first.svg">
-					</div>
 
-					<div class="col-md-1">
-						<img id="partner" class='img-circle' src="/assets/img/friends/fr-01.jpg">
-					</div>
-
-					<div class="col-md-4">
-						<div class="steps centered">
-							<h2 class="steps">113455步&nbsp</h2>
-
+				@for($i=0;$i<count($steps);$i++)
+					<div class="row mt">
+						<div class="col-md-1 centered">
+							@if($i<=2)
+								<img class='contentIcon' src="/graphics/activity/
+								@if($i==0)
+									first
+								@elseif($i==1)
+									second
+								@else
+									third
+								@endif
+								.svg">
+							@else
+								<h1>{{$i+1}}</h1>
+							@endif
 						</div>
-						<img class='steps' src="/graphics/activity/steps.png">
+
+						<div class="col-md-1">
+							<img id="partner" class='img-circle' onclick="checkProfile('{{$steps[$i]->partner}}')" src="/assets/img/ui-sam.jpg">
+						</div>
+
+						<div class="col-md-3">
+							<div class="steps centered">
+								<h2 class="steps">&nbsp&nbsp{{$steps[$i]->step}}步&nbsp&nbsp</h2>
+							</div>
+							<img class='steps' src="/graphics/activity/steps.png">
+						</div>
 
 					</div>
-
-
-				</div>
+				@endfor
 			@else
 				<div class="row mt">
 					<div class="col-md-2 col-md-offset-5">

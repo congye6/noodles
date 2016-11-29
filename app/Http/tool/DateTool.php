@@ -36,9 +36,9 @@ class DateTool{
 	 * @return bool
 	 */
 	static public function isBetween($date,$startDate,$endDate){
-		if(self::isLatter($endDate,$date))
+		if(self::isLatter($date,$endDate))
 			return false;
-		if(self::isLatter($date,$startDate))
+		if(self::isLatter($startDate,$date))
 			return false;
 
 		return true;

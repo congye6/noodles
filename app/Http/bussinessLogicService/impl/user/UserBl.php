@@ -50,6 +50,10 @@ class UserBl implements UserBlService {
 
 	}
 
+	public function getUser($userName){
+		return $this->data->getUser($userName);
+	}
+
 
 
 }

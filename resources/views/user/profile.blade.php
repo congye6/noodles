@@ -132,16 +132,16 @@
                         <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                             <div class="box1">
                                 <span class="li_calendar"></span>
-                                <h3>123<small>天</small></h3>
+                                <h3>{{$userInfo->walkDays}}<small>天</small></h3>
                             </div>
-                            <p>累计运动123天!</p>
+                            <p>累计运动{{$userInfo->walkDays}}天!</p>
                         </div>
                         <div class="col-md-2 col-sm-2 box0">
                             <div class="box1">
                                 <span class="li_fire"></span>
-                                <h3>12345<small>千卡</small></h3>
+                                <h3>{{$heat}}<small>千卡</small></h3>
                             </div>
-                            <p>累计消耗热量12334千卡</p>
+                            <p>累计消耗热量{{$heat}}千卡</p>
                         </div>
                         <div class="col-md-2 col-sm-2 box0">
                             <div class="box1">
@@ -153,16 +153,23 @@
                         <div class="col-md-2 col-sm-2 box0">
                             <div class="box1">
                                 <span class="li_data"></span>
-                                <h3>23</h3>
+                                <h3>{{$userInfo->coins}}</h3>
                             </div>
-                            <p>剩余23金币</p>
+                            <p>剩余{{$userInfo->coins}}金币</p>
                         </div>
                         <div class="col-md-2 col-sm-2 box0">
                             <div class="box1">
                                 <span class="li_heart"></span>
                                 <h3>6</h3>
                             </div>
-                            <p>6个粉丝关注了你</p>
+                            <p>6个粉丝关注了
+                                @if($userName==$_COOKIE['userName'])
+                                    你
+                                @else
+                                    ta
+                                @endif
+
+                            </p>
                         </div>
 
                     </div><!-- /row mt -->

@@ -25,6 +25,15 @@ class ActivityBl implements ActivityBlService {
 		$this->partnerBl=$partnerBl;
 	}
 
+	/**
+	 * 统计用户参加了多少次竞赛
+	 * 包括自己创建的
+	 * @param $userName
+	 */
+	public function getActivityCount($userName){
+
+	}
+
 
 	public function publish(ActivityInfoVO $vo){
 
@@ -57,6 +66,10 @@ class ActivityBl implements ActivityBlService {
 		$activityVOList=[];
 
 		foreach($activityList as $activity){
+			//已经结束
+			if(DateTool::isPast($activity->endTime))
+				continue;
+
 			$activityVO=new ActivityVO();
 			$this->calculate($activity,$activityVO);
 			$activityVO->partnerCount=$this->getPartnerCount($activity);
@@ -75,6 +88,9 @@ class ActivityBl implements ActivityBlService {
 		$activityVOList=[];
 
 		foreach($activityList as $activity){
+			if(DateTool::isPast($activity->endTime))
+				continue;
+
 			$activityVO=new ActivityVO();
 			$this->calculate($activity,$activityVO);
 			$activityVO->partnerCount=$this->getPartnerCount($activity);
@@ -91,6 +107,22 @@ class ActivityBl implements ActivityBlService {
 		$activity=$this->data->getActivity($activityId);
 		$activityVO=new ActivityDetailVO();
 		$this->calculate($activity,$activityVO);
+
+		$activityVO->partnerList=array();
+		//添加创建者
+		array_push($activityVO->partnerList,$activity->publisher);
+		//获取参与者列表
+		$partnerRelations=$this->partnerBl->getPartner($activity->id);
+
+		foreach($partnerRelations as $partnerRelation){
+
+			array_push($activityVO->partnerList,$partnerRelation->partner);
+
+		}
+
+
+
+
 		return $activityVO;
 	}
 

@@ -32,4 +32,6 @@ interface UserBlService{
 	 */
 	public function addWalkDay($userName);
 
+	public function getUser($userName);
+
 }

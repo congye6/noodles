@@ -16,5 +16,7 @@ interface StepDataService{
 
 	public function getSteps($date,$userName);
 
+	public function getAllStep($userName);
+
 
 }

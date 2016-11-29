@@ -20,4 +20,22 @@ interface StepBlService{
 
 	public function setStepGoal($userName,$goal);
 
+	/**
+	 * 获取用户在某个时间段内行走的总步数
+	 * @param $userName
+	 * @param $startDate
+	 * @param $endDate
+	 * @return mixed
+	 */
+	public function getStepTotal($userName,$startDate,$endDate);
+
+	/**
+	 * 获取用户总共消耗的热量
+	 * @param $userName
+	 * @param $startDate
+	 * @param $endDate
+	 * @return mixed
+	 */
+	public function getHeatTotal($userName);
+
 }

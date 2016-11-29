@@ -26,6 +26,7 @@ class WalkController extends Controller {
 	}
 
 	public function getWalkInfo(){
+		$this->stepBl->getHistorySteps($_COOKIE["userName"]);
 
 		$stepTotalVO=$this->stepBl->getStepsByDay($_COOKIE["userName"],DateTool::today());
 

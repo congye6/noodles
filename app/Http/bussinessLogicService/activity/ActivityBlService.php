@@ -16,4 +16,12 @@ interface ActivityBlService{
 	public function getMyActivities($userName);
 
 	public function getActivity($activityId);
+
+
+	/**
+	 * 统计用户参加了多少次竞赛
+	 * 包括自己创建的
+	 * @param $userName
+	 */
+	public function getActivityCount($userName);
 }
