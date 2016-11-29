@@ -146,9 +146,9 @@
                         <div class="col-md-2 col-sm-2 box0">
                             <div class="box1">
                                 <span class="li_clock"></span>
-                                <h3>23</h3>
+                                <h3>{{$activityCount}}</h3>
                             </div>
-                            <p>参加竞赛23次</p>
+                            <p>参加竞赛{{$activityCount}}次</p>
                         </div>
                         <div class="col-md-2 col-sm-2 box0">
                             <div class="box1">
@@ -160,9 +160,9 @@
                         <div class="col-md-2 col-sm-2 box0">
                             <div class="box1">
                                 <span class="li_heart"></span>
-                                <h3>6</h3>
+                                <h3>{{$fansCount}}</h3>
                             </div>
-                            <p>6个粉丝关注了
+                            <p>{{$fansCount}}个粉丝关注了
                                 @if($userName==$_COOKIE['userName'])
                                     你
                                 @else
@@ -184,18 +184,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-6 goleft">
-                                        <p><i class="fa fa-database"></i> 70%</p>
+                                        <p><i class="fa fa-database"></i>{{$stepCompleteRate}}%</p>
                                     </div>
                                 </div>
                                 <canvas id="serverstatus01" height="120" width="120"></canvas>
                                 <script>
                                     var doughnutData = [
                                         {
-                                            value: 70,
+                                            value: {{$stepCompleteRate}},
                                             color:"#68dff0"
                                         },
                                         {
-                                            value : 30,
+                                            value : {{100-$stepCompleteRate}},
                                             color : "#fdfdfd"
                                         }
                                     ];
@@ -212,12 +212,21 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-6 goleft">
-                                        <p><i class="fa fa-info-circle"></i> 偏轻</p>
+                                        <p><i class="fa fa-info-circle"></i>
+                                            @if($bmi<=18.4)
+                                                偏轻
+                                            @elseif($bmi<=23.9)
+                                                正常
+                                            @else
+                                                超重
+                                            @endif
+
+                                        </p>
                                     </div>
                                     <div class="col-sm-6 col-xs-6"></div>
                                 </div>
                                 <div class="centered">
-                                    <h1 style="color:#68dff0;font-size:60px;font-family: 'Roboto', 'Arial', sans-serif;">18.6</h1>
+                                    <h1 style="color:#68dff0;font-size:60px;font-family: 'Roboto', 'Arial', sans-serif;">{{$bmi}}</h1>
                                 </div>
                             </div>
                         </div><!-- /col-md-4 -->
@@ -227,7 +236,7 @@
                             <div class="instagram-panel pn">
                                 <i class="fa fa-instagram fa-4x"></i>
                                 <p>昨夜睡眠<br/>
-                                    8h35min
+                                    {{$sleepInfo->sleepHour}}h{{$sleepInfo->sleepMinute}}min
                                 </p>
                             </div>
                         </div><!-- /col-md-4 -->

@@ -15,4 +15,6 @@ interface PartnerDataService{
 	public function getPartners($activityId);
 
 	public function getPartner($activityId,$username);
+
+    public function getPartnerByName($partner);
 }

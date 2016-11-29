@@ -30,4 +30,8 @@ class PartnerData extends Model  implements PartnerDataService {
 	public function getPartner($activityId,$username){
 		return PartnerData::where([['activityId',$activityId],['partner',$username]])->get();
 	}
+
+    public function getPartnerByName($partner){
+        return PartnerData::where('partner',$partner)->get();
+    }
 }

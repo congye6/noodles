@@ -31,7 +31,11 @@ class ActivityBl implements ActivityBlService {
 	 * @param $userName
 	 */
 	public function getActivityCount($userName){
+        $joinCount=$this->partnerBl->getJoinCount($userName);
 
+        $publishCount=$this->data->getMyActivities($userName)->count();
+
+        return $joinCount+$publishCount;
 	}
 
 

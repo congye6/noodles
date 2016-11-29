@@ -25,6 +25,16 @@ class PartnerBl implements PartnerBlService {
 		$this->activityData=$activityData;
 	}
 
+    /**
+     * 获取参加活动次数
+     * 不包括自己创建的
+     * @param $userName
+     * @return mixed
+     */
+    public function getJoinCount($userName){
+        return $this->data->getPartnerByName($userName)->count();
+    }
+
 	public function joinActivity($activityId,$userName){
 		$isNull=StringTool::isNull($activityId)||StringTool::isNull($userName);
 		if($isNull)
