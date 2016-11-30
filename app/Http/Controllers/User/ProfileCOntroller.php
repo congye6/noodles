@@ -72,4 +72,8 @@ class ProfileController extends Controller {
 		return $this->profile($_COOKIE['userName']);
 	}
 
+	public function uploadIcon(){
+
+    }
+
 }

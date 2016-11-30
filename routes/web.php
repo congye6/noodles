@@ -66,3 +66,4 @@ Route::get('/myProfile','User\ProfileController@myProfile')->middleware('login')
 Route::get('loginPage','User\loginController@loginPage');
 Route::get('login/{userName}/{password}','User\LoginController@login');
 Route::get('register/{userName}/{password}','User\LoginController@register');
+Route::any('icon','User\ProfileController@uploadIcon')->middleware('login');

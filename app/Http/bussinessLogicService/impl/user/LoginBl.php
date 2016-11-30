@@ -41,10 +41,19 @@ class LoginBl implements LoginBlService {
         $user=$this->data->getUser($userVO->userName);
         if($user!=null)
             return '用户名已存在';
-
+        $this->setIcon($userVO->userName);
         $this->data->addUser($userVO);
+
         return 'true';
 
 	}
+
+    /**
+     * 分配一个原始头像
+     * @param $userName
+     */
+	private function setIcon($userName){
+        copy(public_path('/assets/img/ui-sam.jpg'),public_path('/graphics/icon/'.$userName.'.jpg'));
+    }
 
 }
