@@ -56,30 +56,43 @@ class BodyBl implements BodyBlService {
 			return [];
 
 		$statisticList=array();
-		$lastInfo=$historyData[0];//用于进行比较变化率
-		foreach ($historyData as $info){
+
+		$dataArray=array();
+
+
+		$dates=array();
+		foreach($historyData as $data){
+			array_push($dates,$data->date);
+			array_push($dataArray,$data);
+		}
+		array_multisort($dates,SORT_DESC,SORT_STRING,$dataArray,SORT_DESC,SORT_STRING);
+
+
+		foreach ($dataArray as $info){
+			$gap=$info->goal-$info->weight;
+
+			$bodyStatisticVO=new BodyStatisticVO($info->weight,$info->updated_at,true,0,$gap);
+			array_push($statisticList,$bodyStatisticVO);
+
+			//最多返回五条历史数据
+			if(count($statisticList)>=5)
+				break;
+		}
+
+		//计算变化率
+		for($i=0;$i<count($statisticList)-1;$i++){
 			$isIncrease=true;
-			$change=$info->weight-$lastInfo->weight;
+			$change=$statisticList[$i]->weight-$statisticList[$i+1]->weight;
 
 			//体重下降
 			if($change<0){
 				$isIncrease=false;
 				$change=-$change;
 			}
-
 			//变化率，进一法取整
-			$rate=ceil($change/$lastInfo->weight/100.0);
-
-			$gap=$info->goal-$info->weight;
-
-			$bodyStatisticVO=new BodyStatisticVO($info->weight,$info->updated_at,$isIncrease,$rate,$gap);
-			array_push($statisticList,$bodyStatisticVO);
-
-			//最多返回五条历史数据
-			if(count($statisticList)>=5)
-				break;
-
-			$lastInfo=$info;
+			$rate=ceil($change/$statisticList[$i+1]->weight/100.0);
+			$statisticList[$i]->isIncrease=$isIncrease;
+			$statisticList[$i]->rate=$rate;
 		}
 
 		return $statisticList;

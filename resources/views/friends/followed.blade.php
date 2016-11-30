@@ -54,7 +54,7 @@
                         @foreach($friends as $friend)
                             <div class="desc">
                                 <div class="thumb">
-                                    <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
+                                    <img class="img-circle" src="/graphics/icon/{{$friend->followed}}.jpg" width="35px" height="35px" align="">
                                 </div>
                                 <div class="details">
                                     <p><a href="/profile/{{$friend->followed}}">{{$friend->followed}}</a><br/>

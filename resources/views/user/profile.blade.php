@@ -23,14 +23,21 @@
             <link rel="stylesheet" type="text/css" href="/assets/lineicons/style.css">
             <link rel="stylesheet" href="/css/user/profile.css">
 
+
+            <link href="/css/cropper.min.css" rel="stylesheet">
+            <link href="/css/sitelogo.css" rel="stylesheet">
+
+
         @endsection
 
         @section('js')
             @@parent
+            <script src="/js/cropper.min.js"></script>
+            <script src="/js/sitelogo.js"></script>
 
             <script>
                 function sendMessage() {
-                    var message=$('input').val();
+                    var message=$('input.form-control.placeholder-no-fix').val();
                     if(message==''){
                         zeroModal.error('请输入您的消息');
                         return;
@@ -85,9 +92,11 @@
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="tile-light p-5 m-b-15 showback">
-                        <div class="cover p-relative">
+                        <div class="cover p-relative" id="crop-avatar">
                             <img src="/assets/img/cover-bg.jpg" class="w-100" alt="">
-                            <img class="profile-pic" src="/assets/img/profile-pic.jpg" alt="">
+                            @if($userName==$_COOKIE['userName'])<div class="avatar-view" title="">@endif
+                                    <img class="profile-pic" src="/graphics/icon/{{$userName}}.jpg" alt="">
+                                @if($userName==$_COOKIE['userName'])</div>@endif
                             @if($userName!=$_COOKIE['userName'])
                                 <div class="profile-btn">
                                     <button class="btn btn-alt btn-sm" data-toggle="modal" href="#myModal"><i class="icon-bubble"></i> <span>Message</span></button>
@@ -102,6 +111,55 @@
 
                 </div>
             </div>
+
+            {{--上传头像--}}
+            <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form class="avatar-form" action="/icon"  enctype="multipart/form-data" method="post">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" type="button">&times;</button>
+                                <h4 class="modal-title" id="avatar-modal-label">Change Logo Picture</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="avatar-body">
+                                    <div class="avatar-upload">
+                                        <input class="avatar-src" name="avatar_src" type="hidden">
+                                        <input class="avatar-data" name="avatar_data" type="hidden">
+                                        <label for="avatarInput">图片上传</label>
+                                        <input class="avatar-input" id="avatarInput" name="avatar_file" type="file"></div>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="avatar-wrapper"></div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="avatar-preview preview-lg"></div>
+                                            <div class="avatar-preview preview-md"></div>
+                                            <div class="avatar-preview preview-sm"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row avatar-btns">
+                                        <div class="col-md-9">
+                                            <div class="btn-group">
+                                                <button class="btn" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"><i class="fa fa-undo"></i> 向左旋转</button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button class="btn" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"><i class="fa fa-repeat"></i> 向右旋转</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-success btn-block avatar-save" type="submit"><i class="fa fa-save"></i> 保存修改</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+            {{--上传头像--}}
 
             <!-- Modal -->
             <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">

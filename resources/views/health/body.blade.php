@@ -75,6 +75,14 @@
                 return;
             }
 
+            //正则表达式，只能输入小数点和数字
+            var pattern=/^\d+\.{0,1}\d*$/;
+            if((!pattern.exec(height))||(!pattern.exec(weight))||(!pattern.exec(goal))){
+                zeroModal.error('只能输入数字');
+                return;
+            }
+
+
             if(height>250||height<50){
                 zeroModal.error('身高是不是填错了');
                 return;

@@ -63,36 +63,11 @@
 			</div>
 
 			<div class="row mt">
-				<div class="col-md-1">
-					<img id="partner" class='img-circle' src="/assets/img/friends/fr-01.jpg">
-				</div>
-				<div class="col-md-1">
-					<img id="partner" class='img-circle' src="/assets/img/friends/fr-02.jpg">
-				</div>
-				<div class="col-md-1">
-					<img id="partner" class='img-circle' src="/assets/img/friends/fr-03.jpg">
-				</div>
-
-				<div class="col-md-1">
-					<img id="partner" class='img-circle' src="/assets/img/friends/fr-04.jpg">
-				</div>
-				<div class="col-md-1">
-					<img id="partner" class='img-circle' src="/assets/img/friends/fr-05.jpg">
-				</div>
-				<div class="col-md-1">
-					<img id="partner" class='img-circle' src="/assets/img/friends/fr-06.jpg">
-				</div>
-
-				<div class="col-md-1">
-					<img id="partner" class='img-circle' src="/assets/img/friends/fr-07.jpg">
-				</div>
-				<div class="col-md-1">
-					<img id="partner" class='img-circle' src="/assets/img/friends/fr-08.jpg">
-				</div>
-				<div class="col-md-1">
-					<img id="partner" class='img-circle' src="/assets/img/friends/fr-09.jpg">
-				</div>
-
+				@for($i=0;$i<count($steps);$i++)
+					<div class="col-md-1">
+						<img id="partner" class='img-circle' src="/graphics/icon/{{$steps[$i]->partner}}.jpg" onclick="checkProfile('{{$steps[$i]->partner}}')">
+					</div>
+				@endfor
 			</div>
 
 			<div class="row mt">
@@ -161,7 +136,7 @@
 						</div>
 
 						<div class="col-md-1">
-							<img id="partner" class='img-circle' onclick="checkProfile('{{$steps[$i]->partner}}')" src="/assets/img/ui-sam.jpg">
+							<img id="partner" class='img-circle' onclick="checkProfile('{{$steps[$i]->partner}}')" src="/graphics/icon/{{$steps[$i]->partner}}.jpg">
 						</div>
 
 						<div class="col-md-3">

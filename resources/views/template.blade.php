@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+      <meta name="keyword" content="运动 社交 计步器 睡眠 身体 活动 粉丝">
+    <meta name="description" content="一个运动社交的web应用，可进行运动数据管理和运动竞赛的发布和好友交际">
     <title>@section('title')导航@show</title>
 
       @section('css')
@@ -192,7 +193,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="/profile"><img src="/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="/profile/{{$_COOKIE['userName']}}"><img src="/graphics/icon/{{$_COOKIE['userName']}}.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered" id="userName"></h5>
               	  	
                   <li class="mt">
